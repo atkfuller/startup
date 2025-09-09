@@ -57,10 +57,15 @@ sequenceDiagram
 
 ### Key features
 
-- Desc
-- Describe your key feature
-- Describe your key feature
-
+- secure login over https
+- ability to have multiple users
+- personalize features(ie colors and fonts)
+- connect calendars from different platforms
+- adds tasks and events of different categories(that can be customized)
+- ability to add reoccuring events and tasks
+- customize event description for events
+- details are stored accurately
+  
 ### Technologies
 
 I am going to use the required technologies in the following ways.
