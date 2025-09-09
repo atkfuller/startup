@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Did you ever need to look at five different apps and websites to know what to do in a day? Or needed a place where you can easily see and organize your entire schedule? The Ultimate Calendar is your only calendar app you need, it will allow for individual specialization to fit each person needs. There are options to create tasks that needed to be done and events that are happening as well as creating ways to schedule hobbies and habits, perfect for those wanting to plan their day to the minute or for those who need to remember specific events. 
 
 ### Design
 
