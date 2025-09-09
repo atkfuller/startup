@@ -65,17 +65,26 @@ sequenceDiagram
 - ability to add reoccuring events and tasks
 - customize event description for events
 - details are stored accurately
+- remind about events and tasks
+- having shared events
   
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - The structral layout of the calendar. There will be about two pages(maybe more adding and customizing) one for login and the other for calendar view. 
+- **CSS** - The styling aspect of the calendar so it can fit differnet screens. It controls the colors and font of the application(a user can customize this)
+- **React** - provides login and register new users, dispaly calendar, creating a task list, adding events, also settings for personalizing themse and fonts. It also switches the view for login to the calendar. 
+- **Service** - Endpoints
+  *register and login
+  *retreve user events
+  *add new event tasks
+  *update events
+  *delte events
+  *get and set preferences
+  - Third party: using other calendar API(like for holidays also maybe google calendar)
+- **DB/Login** - Stores all data such as user data, event data, task data, preference data. ensures each user only sees their own data.
+- **WebSocket** - handles event and task updates(such as pushing reminders and updating events if changed from other users)
 
 ## 🚀 AWS deliverable
 
