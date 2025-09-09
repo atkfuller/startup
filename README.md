@@ -30,7 +30,8 @@ Did you ever need to look at five different apps and websites to know what to do
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](calendarimage1.png)
+![Design image](calendarimage2.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -38,7 +39,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 sequenceDiagram
     actor You
     actor Website
+    actor User
+    actor LoginUI
+    actor AuthService
+    actor Databse
+    actor CalendarUI
+    actor CalendarService
     You->>Website: Replace this with your design
+    User -> LoginUI: enter credentials
+    LoginUI -> AuthService: send login request
+    AuthService -> Database: verify user
+    Database -> AuthService: valid/invalid
+    AuthService -> LoginUI: return token/session
+
+    User -> CalendarUI: request calendar
+    CalendarUI -> CalendarService: request events (with token)
+    CalendarService -> Database: query events for user
+    Database -> CalendarService: return events
+    CalendarService -> CalendarUI: return events
+    CalendarUI -> User: display calendar
 ```
 
 ### Key features
