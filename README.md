@@ -76,12 +76,12 @@ I am going to use the required technologies in the following ways.
 - **CSS** - The styling aspect of the calendar so it can fit differnet screens. It controls the colors and font of the application(a user can customize this)
 - **React** - provides login and register new users, dispaly calendar, creating a task list, adding events, also settings for personalizing themse and fonts. It also switches the view for login to the calendar. 
 - **Service** - Endpoints
-  -register and login
-  -retreve user events
-  -add new event tasks
-  -update events
-  -delte events
-  -get and set preferences
+  - register and login
+  - retreve user events
+  - add new event tasks
+  - update events
+  - delte events
+  - get and set preferences
   - Third party: using other calendar API(like for holidays also maybe google calendar)
 - **DB/Login** - Stores all data such as user data, event data, task data, preference data. ensures each user only sees their own data.
 - **WebSocket** - handles event and task updates(such as pushing reminders and updating events if changed from other users)
