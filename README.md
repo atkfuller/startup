@@ -96,15 +96,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - There are 4 html pages one for the login screen, the other for the main calendar. There is one html to disply the event information and another when adding an event
+- [x] **Proper HTML element usage** - There is proper html usuage in the all the html. Especially in the calendar where I formatted the title as well as the body. In the body formatted to resemble a calendar format.
+- [x] **Links** - There are multiple links throughout the html there is a link from login to the calendar, the calendar to the event form and a link to the event page.
+- [x] **Text** - There is multiple texts throughout the html, describing the features in the website
+- [x] **3rd party API placeholder** - The 3rd party api I am going to use is going to be a public holidays so its going to be in like the example event.
+- [x] **Images** - I don't know if this counts as images but I put emojis in front of some the inputed data such as the date and description headings for the event html
+- [x] **Login placeholder** - In the index.html there is place to login and enter username and password
+- [x] **DB data placeholder** - There is an example event put in the calendar as a placeholder of the information that will be stored in a database
+- [] **WebSocket placeholder** - I couldn't figureout where I could put a placeholder for the reminders. 
 
 ## 🚀 CSS deliverable
 
