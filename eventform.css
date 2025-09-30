@@ -43,5 +43,21 @@ form div{
     display:flex;
     flex-direction:column;
 }
+label{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+input[type="text"],
+input[type="datetime-local"],
+textarea{
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
 
 
