@@ -14,15 +14,7 @@ h1{
     text-align:center;
     color: white;
 }
-header h2{
-    font-size: 1.6rem;
-    color:white;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-header h2 span{
-    color:#6a11cb;
-}
+
 main{
     background: #fff;
     border-radius: 16px;
@@ -30,6 +22,15 @@ main{
     padding: 2rem;
     max-width: 700px;
     width: 100%;
+}
+main h2{
+    font-size: 1.6rem;
+    font-weight: 700;
+    color:black;
+}
+main h2 span{
+    font-size: 1rem;
+    color:#6a11cb;
 }
 main h3 {
     font-size: 1.2rem;
