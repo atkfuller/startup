@@ -24,3 +24,12 @@ h1 span{
     -webkit-text-fill-color: transparent; 
     background-clip: text; 
 }
+main{
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
