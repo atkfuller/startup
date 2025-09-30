@@ -16,7 +16,7 @@ h1{
 }
 header h2{
     font-size: 1.6rem;
-    color:#444;
+    color:white;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -39,7 +39,14 @@ section{
     margin-bottom: 1.5 rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-
+section h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6a11cb;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 p{
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
