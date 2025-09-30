@@ -35,3 +35,13 @@ h2{
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+table{
+    width: 90%;
+    max-width: 800px;
+    border-collapse: separate;
+    border-spacing: 10px;
+    background: #fff;
+    border-radius:16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    overflow:hidden;
+}
