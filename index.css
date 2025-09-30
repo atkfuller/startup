@@ -7,5 +7,10 @@ body {
 }
 main{
     background: linear-gradient(135deg, #6a11cb, #2575fc);
-    
+    color:#333;
+    font-family: "Tahoma";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
