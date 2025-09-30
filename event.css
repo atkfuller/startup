@@ -31,3 +31,15 @@ main{
     max-width: 700px;
     width: 100%;
 }
+section{
+    margin-bottom: 1.5 rem;
+}
+p{
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+p span{
+    font-weight: 600;
+    color: #2575fc;
+}
