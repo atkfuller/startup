@@ -32,4 +32,11 @@ main{
     max-width: 600px;
     width: 100%;
 }
+form h2{
+    font-size: 1.6rem;
+    color: #6a11cb;
+    margin-bottom:1.5rem;
+    text-align: center;
+}
+
 
