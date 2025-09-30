@@ -60,3 +60,12 @@ td{
     background: #f9f9f9;
     position: relative;
 }
+td a{
+    display: inline-block;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    background: #2575fc;
+    color: #fff;
+    padding: 0.2rem 0.5 rem;
+    border-radius: 6px;
+}
