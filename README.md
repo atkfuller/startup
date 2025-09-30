@@ -104,7 +104,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Images** - I don't know if this counts as images but I put emojis in front of some the inputed data such as the date and description headings for the event html
 - [x] **Login placeholder** - In the index.html there is place to login and enter username and password
 - [x] **DB data placeholder** - There is an example event put in the calendar as a placeholder of the information that will be stored in a database
-- [] **WebSocket placeholder** - I couldn't figureout where I could put a placeholder for the reminders. 
+- [] **WebSocket placeholder** - I couldn't figure out where I could put a placeholder for the reminders. 
 
 ## 🚀 CSS deliverable
 
