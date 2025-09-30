@@ -29,3 +29,13 @@ form div{
     background: #f9f9f9;
     transition: border 0.3s easer;
 }
+form div:focus-within {
+    border: 1px solid #6a11cb;
+}
+form span{
+    font-size: 1.2rem;
+    margin-right: 0.6rem;
+}
+input{
+
+}
