@@ -45,3 +45,18 @@ table{
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     overflow:hidden;
 }
+th{
+    color: #6a11cb;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+}
+td{
+    height: 100px;
+    width: 100px;
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: #f9f9f9;
+    position: relative;
+}
