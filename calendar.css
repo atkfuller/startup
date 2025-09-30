@@ -60,6 +60,12 @@ td{
     background: #f9f9f9;
     position: relative;
 }
+td.today{
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
 td a{
     display: inline-block;
     margin-top: 0.3rem;
