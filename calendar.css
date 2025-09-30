@@ -1,0 +1,9 @@
+body{
+    background: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#333;
+    padding: 2rem 1rem;
+}
