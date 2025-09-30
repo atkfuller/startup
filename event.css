@@ -32,8 +32,14 @@ main{
     width: 100%;
 }
 section{
+    background: #f4f7ff;
+    border-left: 5px solid #6a11cb;
+    border-radius: 8px;
+    padding: 1rem;
     margin-bottom: 1.5 rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
+
 p{
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -42,4 +48,14 @@ p{
 p span{
     font-weight: 600;
     color: #2575fc;
+}
+button{
+    background:#6a11cb;
+    color:#fff;
+    border:none;
+    border-radius: 8px;
+    padding:0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
 }
