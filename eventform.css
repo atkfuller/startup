@@ -64,7 +64,19 @@ textarea:focus{
     outline: none;
     border: 1px solid #6a11cb;
     box-shadow: 0 0 4px rgba(106,17,203,0.3);
-
+}
+textarea{
+    resize:vertical;
+    min-height: 100px;
+}
+input[type="submit"]{
+    background: #6a11cb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1 rem;
+    font-weight: 600;
 }
 
 
