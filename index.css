@@ -5,6 +5,16 @@ body {
     align-items: center; 
     min-height: 100vh; 
 }
+body > h1 { 
+    font-size: 2.5rem; 
+    font-weight: 800; 
+    text-align: center; 
+    margin-bottom: 1.5rem; 
+    background: linear-gradient(90deg, #ff6a00, #ee0979, #2575fc, #6a11cb); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text; color: transparent; 
+}
 main{
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color:#333;
@@ -17,7 +27,7 @@ main{
 h1{
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #444;
+    color: black;
 }
 form div{
     display: flex;
