@@ -110,12 +110,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I styled all the html pages so that it all make sense fluidly
+- [x] **Navigation elements** - There is buttons that are stylized to be able to move through the various pages in html
+- [x] **Responsive to window resizing** -  The calendar is flexible to the window sizing as the main body is always on disply of flex
+- [x] **Application elements** - There is styling of the calendar with the placement of event also highlighting the current day
+- [x] **Application text content** - All the text is stylized to fit with the theme of the application and describes what each part is going to include
+- [ ] **Application images** - I do not have any images in my application
 
 ## 🚀 React part 1: Routing deliverable
 
