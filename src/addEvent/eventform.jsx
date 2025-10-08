@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./eventform.css";
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
 
-export default function EventForm() {
+export default function AddEvent() {
   // Optional: store form data with React state
   const [formData, setFormData] = useState({
     eventTitle: "",
@@ -17,7 +19,7 @@ export default function EventForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.location.href = "calendar.html";
+    navigate("/calendar");
   };
 
   return (

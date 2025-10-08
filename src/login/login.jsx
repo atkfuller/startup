@@ -1,9 +1,50 @@
-import React from 'react';
+import React, { useState } from "react";
+import "./login.css";
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
 
-export function Login() {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/calendar");
+  };
+
   return (
-    <main className="container-fluid bg-secondary text-center">
-      <div>login displayed here</div>
-    </main>
+    <div>
+      <h1>ULTIMATE CALENDAR</h1>
+
+      <main>
+        <h1>Sign In</h1>
+
+        <form onSubmit={handleSubmit}>
+          <div>
+            <span>@</span>
+            <input
+              type="text"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <span>🔒</span>
+            <input
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+      </main>
+    </div>
   );
 }

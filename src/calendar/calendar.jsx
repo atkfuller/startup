@@ -1,5 +1,7 @@
 import React from "react";
 import "./calendar.css";
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
 
 export default function Calendar() {
   return (
@@ -7,13 +9,7 @@ export default function Calendar() {
       <h1>Welcome to Ultimate Calendar</h1>
 
       <div style={{ textAlign: "center", margin: "20px" }}>
-        {/* React uses onClick, not onclick */}
-        <button
-          className="add-btn"
-          onClick={() => (window.location.href = "eventform.html")}
-        >
-          +
-        </button>
+       <button onClick={() => navigate("/eventform")}>+</button>
       </div>
 
       <h2 style={{ textAlign: "center" }}>January 2025</h2>

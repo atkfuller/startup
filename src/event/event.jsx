@@ -1,5 +1,7 @@
 import React from "react";
 import "./event.css";
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
 
 export default function Event() {
   return (
@@ -16,10 +18,8 @@ export default function Event() {
           <p>This is where the description of the event will go.</p>
         </section>
 
-        {/* In React, we use onClick or React Router for navigation */}
-        <button onClick={() => (window.location.href = "calendar.html")}>
-          Go to Calendar
-        </button>
+        
+         <button onClick={() => navigate("/calendar")}>Go to Calendar</button>
       </main>
     </div>
   );
