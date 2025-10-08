@@ -1,9 +1,36 @@
 import React from 'react';
+import './eventform.css';
 
 export function AddEvent() {
   return (
-    <main className="container-fluid bg-secondary text-center">
-      <div>addevent displayed here</div>
-    </main>
+    <main>
+        <h1>Event</h1>
+        <form action="calendar.html" method="post">
+            <h2>Add New Calendar Event</h2>
+            <div>
+                <label for="eventTitle">Event Title:</label>
+                <input type="text" id="eventTitle" name="eventTitle" required/>
+            </div>
+
+            <div>
+                <label for="startTime">Start Time:</label>
+                <input type="datetime-local" id="startTime" name="startTime" required/>
+            </div>
+
+            <div>
+                <label for="endTime">End Time:</label>
+                <input type="datetime-local" id="endTime" name="endTime" required/>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Add Event"/>
+            </div>
+
+        </form>
+        </main>
   );
 }
