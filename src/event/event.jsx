@@ -1,9 +1,26 @@
-import React from 'react';
+import React from "react";
+import "./event.css";
 
-export function Event() {
+export default function Event() {
   return (
-    <main className="container-fluid bg-secondary text-center">
-      <div>events displayed here</div>
-    </main>
+    <div>
+      <h1>Event</h1>
+
+      <main>
+        <h2>Event name</h2>
+        <h3>January 5, 2025</h3>
+        <p>2:00 PM - 3:00 PM</p>
+
+        <h3>📄 Description:</h3>
+        <section>
+          <p>This is where the description of the event will go.</p>
+        </section>
+
+        {/* In React, we use onClick or React Router for navigation */}
+        <button onClick={() => (window.location.href = "calendar.html")}>
+          Go to Calendar
+        </button>
+      </main>
+    </div>
   );
 }

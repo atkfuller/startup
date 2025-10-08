@@ -1,36 +1,82 @@
-import React from 'react';
-import './eventform.css';
+import React, { useState } from "react";
+import "./eventform.css";
 
-export function AddEvent() {
+export default function EventForm() {
+  // Optional: store form data with React state
+  const [formData, setFormData] = useState({
+    eventTitle: "",
+    startTime: "",
+    endTime: "",
+    description: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    window.location.href = "calendar.html";
+  };
+
   return (
     <main>
-        <h1>Event</h1>
-        <form action="calendar.html" method="post">
-            <h2>Add New Calendar Event</h2>
-            <div>
-                <label for="eventTitle">Event Title:</label>
-                <input type="text" id="eventTitle" name="eventTitle" required/>
-            </div>
+      <h1>Event</h1>
+      <form onSubmit={handleSubmit}>
+        <h2>Add New Calendar Event</h2>
 
-            <div>
-                <label for="startTime">Start Time:</label>
-                <input type="datetime-local" id="startTime" name="startTime" required/>
-            </div>
+        <div>
+          <label htmlFor="eventTitle">Event Title:</label>
+          <input
+            type="text"
+            id="eventTitle"
+            name="eventTitle"
+            value={formData.eventTitle}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-            <div>
-                <label for="endTime">End Time:</label>
-                <input type="datetime-local" id="endTime" name="endTime" required/>
-            </div>
+        <div>
+          <label htmlFor="startTime">Start Time:</label>
+          <input
+            type="datetime-local"
+            id="startTime"
+            name="startTime"
+            value={formData.startTime}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-            <div>
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" rows="5"></textarea>
-            </div>
-            <div>
-                <input type="submit" value="Add Event"/>
-            </div>
+        <div>
+          <label htmlFor="endTime">End Time:</label>
+          <input
+            type="datetime-local"
+            id="endTime"
+            name="endTime"
+            value={formData.endTime}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        </form>
-        </main>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="5"
+            value={formData.description}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <input type="submit" value="Add Event" />
+        </div>
+      </form>
+    </main>
   );
 }
