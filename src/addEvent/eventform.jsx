@@ -22,6 +22,7 @@ export default function AddEvent() {
   };
 
   return (
+    <div class ="eventform-page">
     <main>
       <h1>Event</h1>
       <form onSubmit={handleSubmit}>
@@ -79,5 +80,6 @@ export default function AddEvent() {
         </div>
       </form>
     </main>
+    </div>
   );
 }

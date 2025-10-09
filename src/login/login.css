@@ -23,6 +23,7 @@
  /* Replicating the 70vh bottom-anchored main element */
  .main-container {
      flex: 0 0 70vh;
+     max-width: none;
      width: 100%;
      margin-top: auto;
      /* Pushes the element to the bottom */

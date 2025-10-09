@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Event() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="event-page">
       <h1>Event</h1>
 
       <main>
