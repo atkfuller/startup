@@ -20,7 +20,7 @@
     background-clip: text; 
     color: transparent; 
 }
-main{
+.main-body{
     flex: 0 0 70vh;
     width:100%;
     margin-top: auto;
@@ -35,7 +35,7 @@ main{
     font-family: "Cooperplate";
     
 }
-main>h1{
+.main-body>h1{
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: WHITE;

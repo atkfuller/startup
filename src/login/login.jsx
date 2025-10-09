@@ -17,6 +17,7 @@ export default function Login() {
       <h1>ULTIMATE CALENDAR</h1>
 
       <main>
+        <div className="main-body">
         <h1>Sign In</h1>
 
         <form onSubmit={handleSubmit}>
@@ -40,10 +41,10 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-
+        </div> 
           <button type="submit">Login</button>
         </form>
+        </div>.
       </main>
     </div>
   );
