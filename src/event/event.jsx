@@ -1,7 +1,7 @@
 import React from 'react';
 import "./event.css";
 import { useNavigate } from "react-router-dom";
-export function Event() {
+export default function Event() {
   const navigate = useNavigate();
     const handleClick = () => {
     navigate("/calendar");

@@ -2,7 +2,7 @@ import React from 'react';
 import "./eventform.css";
 import { useNavigate } from "react-router-dom";
 
-export function AddEvent() {
+export default function AddEvent() {
 const navigate = useNavigate();
 const [formData, setFormData] = useState({
     eventTitle: "",
