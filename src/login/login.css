@@ -1,4 +1,4 @@
-body { 
+.login-page { 
     color: #333; 
     display: flex; 
     justify-content: center; 
@@ -7,7 +7,7 @@ body {
     min-height: 100vh; 
     flex-direction: column;
 }
-body > h1 { 
+.gradient-title{ 
     font-size: 4.5rem; 
     font-weight: 900; 
     text-align: center; 
@@ -18,7 +18,7 @@ body > h1 {
     background-clip: text; 
     color: transparent; 
 }
-main{
+.main-container{
     flex: 0 0 70vh;
     width:100%;
     margin-top: auto;
@@ -33,12 +33,12 @@ main{
     font-family: "Cooperplate";
     
 }
-main>h1{
+.sign-in-text{
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: WHITE;
 }
-form div{
+.inputgroup{
     display: flex;
     align-items: center;
     margin-bottom: 1.2rem;
@@ -48,12 +48,9 @@ form div{
     background: #f9f9f9;
     transition: border 0.3s easer;
 }
-form div:focus-within {
+.inputgroup:focus-within {
     border: 1px solid #6a11cb;
-}
-form span{
-    font-size: 1.2rem;
-    margin-right: 0.6rem;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
 }
 input{
     border:none;
