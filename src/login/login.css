@@ -20,7 +20,7 @@
     background-clip: text; 
     color: transparent; 
 }
-main{
+.login-page main{
     flex: 0 0 70vh;
     width:100%;
     margin-top: auto;
@@ -35,12 +35,12 @@ main{
     font-family: "Cooperplate";
     
 }
-main>h1{
+.login-page main>h1{
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: WHITE;
 }
-form div{
+.login-page form div{
     display: flex;
     align-items: center;
     margin-bottom: 1.2rem;
@@ -50,14 +50,14 @@ form div{
     background: #f9f9f9;
     transition: border 0.3s easer;
 }
-form div:focus-within {
+.login-page form div:focus-within {
     border: 1px solid #6a11cb;
 }
-form span{
+.login-page form span{
     font-size: 1.2rem;
     margin-right: 0.6rem;
 }
-input{
+.login-page input{
     border:none;
     outline: none;
     color:black;
@@ -66,7 +66,7 @@ input{
     background: transparent;
     font-family: 'Courier New', Courier, monospace;
 }
-button{
+.login-page button{
     margin: 0.6rem 0.3rem;
     padding: 0.7rem 1.2rem;
     border-radius: 8px;
