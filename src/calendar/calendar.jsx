@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Calendar() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="calendar-page">
       <h1>Welcome to Ultimate Calendar</h1>
 
       <div style={{ textAlign: "center", margin: "20px" }}>

@@ -7,7 +7,6 @@ export default function Event() {
   return (
     <div className="event-page">
       <h1>Event</h1>
-
       <main>
         <h2>Event name</h2>
         <h3>January 5, 2025</h3>
