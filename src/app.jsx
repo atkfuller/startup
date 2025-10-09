@@ -10,6 +10,7 @@ import  Event  from './event/event.jsx';
 export default function App() {
   return (
     <BrowserRouter>
+    <div className='body'>
       <Routes>
     <Route path='/' element={<Login />} exact />
     <Route path='/addEvent' element={<AddEvent />} />
@@ -20,7 +21,7 @@ export default function App() {
       <footer>
             <p>Created by <a href="https://github.com/atkfuller/startup.git" target="_blank">My GitHub</a></p>
         </footer>
-    
+    </div>
     </BrowserRouter>
   );
   
