@@ -13,7 +13,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h1>ULTIMATE CALENDAR</h1>
 
       <main>

@@ -1,13 +1,14 @@
-body { 
-    color: #333; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    background: #fff;
-    min-height: 100vh; 
-    flex-direction: column;
+.login-page {
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  min-height: 100vh;
+  flex-direction: column;
 }
-body > h1 { 
+
+.login-page > h1 { 
     font-size: 4.5rem; 
     font-weight: 900; 
     text-align: center; 
