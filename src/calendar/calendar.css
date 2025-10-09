@@ -1,4 +1,4 @@
-body{
+.calendar-page{
     background: white;
     min-height: 100vh;
     display: flex;
@@ -7,7 +7,7 @@ body{
     color:#333;
     padding: 2rem 1rem;
 }
-body > h1{
+.gradient-main{
     font-size: 2.5rem;
     font-weight: 800;
     text-align: center;
@@ -18,7 +18,7 @@ body > h1{
     background-clip: text;
     color: transparent;
 }
-h2{
+.month-title{
     font-size: 1.8rem;
     text-align: center;
     margin: 1rem 0;
@@ -35,7 +35,7 @@ h2{
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-table{
+.calendar-table{
     width: 90%;
     max-width: 800px;
     border-collapse: separate;
@@ -45,12 +45,12 @@ table{
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     overflow:hidden;
 }
-th{
+.calendar-table{
     color: #6a11cb;
     font-size: 1.1rem;
     padding: 0.5rem;
 }
-td{
+.calendar-table td{
     height: 100px;
     width: 100px;
     text-align: left;
@@ -65,7 +65,7 @@ td.today{
     color: #fff;
     font-weight: bold;
 }
-td a{
+.calednar-table td a{
     display: inline-block;
     margin-top: 0.3rem;
     font-size: 0.9rem;
@@ -77,9 +77,4 @@ td a{
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
-footer{
-    text-align: center; 
-    margin-top: 40px; 
-    padding: 10px; 
-    background-color: #f0f0f0;
-}
+
