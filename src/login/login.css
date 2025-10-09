@@ -1,4 +1,4 @@
-.login-page {
+body{
   color: #333;
   background-color: white;
   display: flex;
@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 
-.login-page > h1 { 
+body > h1 { 
     font-size: 4.5rem; 
     font-weight: 900; 
     text-align: center; 
@@ -20,7 +20,7 @@
     background-clip: text; 
     color: transparent; 
 }
-.main-body{
+main{
     flex: 0 0 70vh;
     width:100%;
     margin-top: auto;
@@ -35,7 +35,7 @@
     font-family: "Cooperplate";
     
 }
-.main-body>h1{
+main > h1{
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: WHITE;
