@@ -1,9 +1,9 @@
 import React from "react";
 import "./event.css";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
 
 export default function Event() {
+  const navigate = useNavigate();
   return (
     <div>
       <h1>Event</h1>

@@ -1,9 +1,9 @@
 import React from "react";
 import "./calendar.css";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
 
 export default function Calendar() {
+  const navigate = useNavigate();
   return (
     <div>
       <h1>Welcome to Ultimate Calendar</h1>
