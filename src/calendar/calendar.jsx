@@ -95,25 +95,6 @@ export default function Calendar() {
         </tbody>
       </table>
 
-      <footer
-        style={{
-          textAlign: "center",
-          marginTop: "40px",
-          padding: "10px",
-          backgroundColor: "#f0f0f0",
-        }}
-      >
-        <p>
-          Created by{" "}
-          <a
-            href="https://github.com/atkfuller/startup.git"
-            target="_blank"
-            rel="noreferrer"
-          >
-            My GitHub
-          </a>
-        </p>
-      </footer>
     </div>
   );
 }
