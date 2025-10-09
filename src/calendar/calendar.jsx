@@ -49,7 +49,7 @@ export default function Calendar() {
             <td>
               5
               <br />
-              <Link to="/event">example event</Link>
+              <button onClick={handleClick}>example event</button>
             </td>
             <td>6</td>
             <td>7</td>
