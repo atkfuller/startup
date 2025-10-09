@@ -1,4 +1,4 @@
-body{
+.eventform-page{
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     min-height: 100vh;
     display: flex;
@@ -7,7 +7,7 @@ body{
     padding: 2rem 1rem;
     color: #333;
 }
-h1{
+.h11-text{
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
@@ -18,7 +18,7 @@ h1{
     background-clip: text; 
 }
 
-main{
+.main-container{
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
@@ -26,18 +26,18 @@ main{
     max-width: 600px;
     width: 100%;
 }
-form h2{
+.eventform-text{
     font-size: 1.6rem;
     color: #6a11cb;
     margin-bottom:1.5rem;
     text-align: center;
 }
-form div{
+.form-sheet{
     margin-bottom: 1.2rem;
     display:flex;
     flex-direction:column;
 }
-label{
+.eventform-page label{
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
