@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login.jsx';
-import { AddEvent } from './addEvent/eventform.jsx';
+import AddEvent from './addEvent/eventform.jsx';
 import { Calendar } from './calendar/calendar.jsx';
 import { Event } from './event/event.jsx';
 

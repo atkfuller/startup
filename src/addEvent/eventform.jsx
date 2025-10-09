@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const navigate = useNavigate();
 
 export default function AddEvent() {
-  // Optional: store form data with React state
   const [formData, setFormData] = useState({
     eventTitle: "",
     startTime: "",
