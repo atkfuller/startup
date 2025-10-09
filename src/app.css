@@ -1,5 +1,21 @@
-.body {
-  display: flex;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex; 
   flex-direction: column;
-  min-width: 375px;
+}
+body { 
+    color: #333; 
+    justify-content: center; 
+    align-items: center; 
+    background: #fff;
+    min-height: 100vh; 
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
