@@ -9,7 +9,7 @@ export default function Calendar() {
       <h1>Welcome to Ultimate Calendar</h1>
 
       <div style={{ textAlign: "center", margin: "20px" }}>
-       <button onClick={() => navigate("/eventform")}>+</button>
+       <button onClick={() => navigate("/addEvent")}>+</button>
       </div>
 
       <h2 style={{ textAlign: "center" }}>January 2025</h2>
