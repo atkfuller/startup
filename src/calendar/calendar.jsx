@@ -49,7 +49,7 @@ export default function Calendar() {
             <td>
               5
               <br />
-              <a href="event.html">example event</a>
+              <Link to="/event">example event</Link>
             </td>
             <td>6</td>
             <td>7</td>
