@@ -20,7 +20,7 @@ export default function Login() {
         <h1>Sign In</h1>
 
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="input-group">
             <span>@</span>
             <input
               type="text"
@@ -31,7 +31,7 @@ export default function Login() {
             />
           </div>
 
-          <div>
+          <div className="input-group">
             <span>🔒</span>
             <input
               type="password"
