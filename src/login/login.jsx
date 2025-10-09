@@ -13,10 +13,10 @@ export default function Login() {
   };
 
   return (
-     <div>
+     <div className="login-page">
       <h1>ULTIMATE CALENDAR</h1>
       <main>
-        <h1>Sign In</h1>
+        <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
            <div className="input-group">
             <span>@</span>

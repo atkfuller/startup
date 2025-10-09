@@ -1,4 +1,4 @@
-body{
+.login-page{
   color: #333;
   background-color: white;
   display: flex;
@@ -8,8 +8,7 @@ body{
   min-height: 100vh;
   flex-direction: column;
 }
-
-body > h1 { 
+.login-page > h1 { 
     font-size: 4.5rem; 
     font-weight: 900; 
     text-align: center; 
@@ -35,7 +34,7 @@ main{
     font-family: "Cooperplate";
     
 }
-main > h1{
+main > h2{
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: WHITE;
