@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./eventform.css";
 import { useNavigate } from "react-router-dom";
 
-export default function AddEvent() {
+export default function AddEvent({setEvents}) {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [formData, setEvents] = useState({
     eventTitle: "",
     startTime: "",
     endTime: "",
@@ -13,7 +13,7 @@ export default function AddEvent() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setEvents((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {

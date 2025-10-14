@@ -8,13 +8,14 @@ import Calendar from './calendar/calendar.jsx';
 import  Event  from './event/event.jsx';
 
 export default function App() {
+  const [events, setEvents] = useState([]);
   return (
     <BrowserRouter>
     <div className='body'>
       <Routes>
     <Route path='/' element={<Login />} exact />
-    <Route path='/addEvent' element={<AddEvent />} />
-    <Route path='/calendar' element={<Calendar />} />
+    <Route path='/addEvent' element={<AddEvent setEvents={setEvents}/>} />
+    <Route path='/calendar' element={<Calendar events={events} />} />
     <Route path='/event' element={<Event />} />
     <Route path='*' element={<NotFound />} />
   </Routes>
