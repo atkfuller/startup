@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { Unauthenticated } from './unauthenticated';
@@ -7,9 +7,23 @@ import { AuthState } from './authState';
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [authState, setAuthState] = useState(AuthState.Unknown);
+  const [userName, setUserName] = useState("");
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUserName(storedUser);
+      setAuthState(AuthState.Authenticated);
+    } else {
+      setAuthState(AuthState.Unauthenticated);
+    }
+  }, []);
+
+  function onAuthChange(user, newState) {
+    setUserName(user);
+    setAuthState(newState);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate("/calendar");
@@ -22,7 +36,7 @@ export default function Login() {
 
         <main className="main-container">
          <div>
-        {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
+        {authState !== AuthState.Unknown && <h1>Welcome to Ultimate Calendar</h1>}
         {authState === AuthState.Authenticated && (
           <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
         )}

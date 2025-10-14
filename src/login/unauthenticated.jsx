@@ -1,16 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-export function Unauthenticated() {
-  const [email, setEmail] = React.useState(props.userName);
+import { Button } from "react-bootstrap";
+export function Unauthenticated({userName, onLogin}) {
+  const [email, setEmail] = React.useState(props.userName || '');
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
   async function handleLogin(e) {
-    localStorage.setItem('user', email);
-    props.onLogin(email);
+    if (!email || !password) {
+      setDisplayError("Please enter both email and password.");
+      return;
+    }
+    localStorage.setItem("user", email);
+    onLogin(email);
   }
   async function handleRegister(e) {
-    localStorage.setItem('user', email);
-    props.onLogin(email);
+     e.preventDefault();
+    if (!email || !password) {
+      setDisplayError("Please enter both email and password.");
+      return;
+    }
+    localStorage.setItem("user", email);
+    onLogin(email);
   }
   return (
     <main className="login_page">
