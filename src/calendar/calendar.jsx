@@ -29,9 +29,8 @@ export default function Calendar({events}) {
   if(!dayNum) return [];
     const date = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayNum).padStart(2, "0")}`;
     return events.filter(ev => ev.date === date);
- }
+ };
 
-  
   return (
     <div className="calendar-page">
       <h1>Welcome to Ultimate Calendar</h1>
@@ -40,7 +39,7 @@ export default function Calendar({events}) {
        <button onClick={() => navigate("/addEvent")}>+</button>
       </div>
 
-      <h2 style={{ textAlign: "center" }}>January 2025</h2>
+      <h2 style={{ textAlign: "center" }}> {monthNames[month]} {year}</h2>
 
       <br />
 
@@ -60,66 +59,43 @@ export default function Calendar({events}) {
             <th>Sat</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>2</td>
-          </tr>
-          <tr></tr>
-          <tr>
-            <td>3</td>
-            <td>4</td>
-            <td>
-              5
-              <br />
-              <a href="/event">example event</a>
-            </td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-            <td>14</td>
-            <td>15</td>
-            <td>16</td>
-          </tr>
-          <tr>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
-            <td>22</td>
-            <td>23</td>
-          </tr>
-          <tr>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-            <td>29</td>
-            <td className="today">30</td>
-          </tr>
-          <tr>
-            <td>31</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-          </tr>
+         <tbody>
+          {weeks.map((week, i) => (
+            <tr key={i}>
+              {week.map((dayNum, j) => {
+                const isToday =
+                  dayNum &&
+                  dayNum === today.getDate() &&
+                  month === today.getMonth() &&
+                  year === today.getFullYear();
+
+                return (
+                  <td
+                    key={j}
+                    className={isToday ? "today" : ""}
+                    style={{
+                      border: isToday ? "2px solid #007bff" : "1px solid #ccc",
+                      borderRadius: "8px",
+                      minWidth: "60px",
+                      verticalAlign: "top",
+                      padding: "10px"
+                    }}
+                  >
+                    {dayNum && (
+                      <>
+                        <div>{dayNum}</div>
+                        {getEventsForDay(dayNum).map((ev) => (
+                          <div key={ev.id}>
+                            <a href={`/event/${ev.id}`}>{ev.title}</a>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
         </tbody>
       </table>
 
