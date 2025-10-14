@@ -4,20 +4,22 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddEvent({setEvents}) {
   const navigate = useNavigate();
-  const [formData, setEvents] = useState({
-    eventTitle: "",
-    startTime: "",
-    endTime: "",
-    description: "",
-  });
+  const [eventTitle, setTitle] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [description, setDescription] = useState(""); 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEvents((prev) => ({ ...prev, [name]: value }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+     const newEvent = {
+      id: Date.now(),
+      eventTitle,
+      startTime,
+      endTime,
+      description,
+    };
+    setEvents((prev) => [...prev, newEvent]);
     navigate("/calendar");
   };
 
@@ -35,7 +37,7 @@ export default function AddEvent({setEvents}) {
             id="eventTitle"
             name="eventTitle"
             value={formData.eventTitle}
-            onChange={handleChange}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
@@ -47,7 +49,7 @@ export default function AddEvent({setEvents}) {
             id="startTime"
             name="startTime"
             value={formData.startTime}
-            onChange={handleChange}
+            onChange={(e) => setStartTime(e.target.value)}
             required
           />
         </div>
@@ -59,7 +61,7 @@ export default function AddEvent({setEvents}) {
             id="endTime"
             name="endTime"
             value={formData.endTime}
-            onChange={handleChange}
+            onChange={(e) => setEndTime(e.target.value)}
             required
           />
         </div>
@@ -71,7 +73,7 @@ export default function AddEvent({setEvents}) {
             name="description"
             rows="5"
             value={formData.description}
-            onChange={handleChange}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
 
