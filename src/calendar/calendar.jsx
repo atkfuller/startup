@@ -3,7 +3,6 @@ import "./calendar.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Calendar({events}) {
-   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const username = localStorage.getItem("currentUser");
