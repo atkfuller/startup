@@ -19,6 +19,12 @@ export default function AddEvent({setEvents}) {
       endTime,
       description,
     };
+    const username = localStorage.getItem("currentUser");
+    if (username) {
+      const userEvents = JSON.parse(localStorage.getItem(username)) || [];
+      userEvents.push(newEvent);
+      localStorage.setItem(username, JSON.stringify(userEvents));
+    }
     setEvents((prev) => [...prev, newEvent]);
     navigate("/calendar");
   };
