@@ -360,6 +360,7 @@ console.log("Inline JS here");
 (Linking scripts is shown on MDN ). Place scripts at the end of <body> or use defer so that the DOM is loaded first 
 
 Basic Syntax:
+'''
 // variables
 let name = "Alice"; const PI = 3.14; // mutable
 // constant
@@ -376,6 +377,7 @@ console.log(i);
 if (name === "Alice") {
 console.log("Hello, Alice!");
 }
+'''
 DOM Manipulation & Events: Use document.querySelector / getElementById to grab
 elements, then change content or style:
 const btn = document.querySelector("#myButton");
@@ -531,7 +533,7 @@ const names = students.map(s => s.name);
 console.log(names);
 Output: ['Amy', 'Ben'] — This extracts the 'name' property from each object. Map doesn't change the
 original array.
-
+'''
 const button = document.getElementById('myButton');
 button.addEventListener('click', () => {
  alert('Button clicked!');
@@ -549,6 +551,7 @@ form.addEventListener('submit', e => {
  e.preventDefault();
  console.log('Form submitted');
 });
+'''
 Prevents form refresh on submit and handles the event using JS.
 const heading = document.getElementById('title');
 heading.style.color = 'green';
@@ -576,6 +579,7 @@ Yes. Example: person.city = "Provo";
 Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and
 leave the "fish" text unaffected?
 HTML:
+'''
 <p id="animal">animal</p>
 <p id="fish">fish</p>
 Option 1 (direct):
@@ -583,6 +587,7 @@ document.getElementById('animal').textContent = 'crow';
 Option 2 (variable):
 const animal = document.getElementById('animal');
 animal.textContent = 'crow';
+'''
 Both work; second is clearer if reusing element.
 
 Which of the following correctly describes JSON?

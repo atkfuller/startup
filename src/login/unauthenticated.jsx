@@ -1,8 +1,9 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { Button } from "react-bootstrap";
 export function Unauthenticated({userName, onLogin}) {
-  const [email, setEmail] = React.useState(props.userName || '');
+  const [email, setEmail] = React.useState(userName || '');
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
   async function handleLogin(e) {
@@ -21,6 +22,10 @@ export function Unauthenticated({userName, onLogin}) {
     }
     localStorage.setItem("user", email);
     onLogin(email);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleLogin();
   }
   return (
     <main className="login_page">
@@ -51,7 +56,7 @@ export function Unauthenticated({userName, onLogin}) {
             <Button variant='primary' onClick={() => handleLogin()} disabled={!email || !password}>
           Login
         </Button>
-        <Button variant='secondary' onClick={() => handleRegisterr()} disabled={!email || !password}>
+        <Button variant='secondary' onClick={() => handleRegister()} disabled={!email || !password}>
           Create
         </Button>
          </form>
