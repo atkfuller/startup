@@ -3,6 +3,15 @@ import "./calendar.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Calendar({events}) {
+   const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const username = localStorage.getItem("currentUser");
+    if (username) {
+      const userEvents = JSON.parse(localStorage.getItem(username)) || [];
+      setEvents(userEvents);
+    }
+  }, []);
   const navigate = useNavigate();
   const today= new Date();
   const year= today.getFullYear();
@@ -12,7 +21,7 @@ export default function Calendar({events}) {
   const daysInMonth= new Date(year, month + 1, 0).getDate();
   const weeks=[];
   let day = 1-firstDay.getDay();
-  //geneartes the weeks in the calendar for the month
+ 
   while(day<=daysInMonth){
     const week=[];
     for(let i=0; i<7; i++){
