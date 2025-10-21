@@ -11,7 +11,7 @@ export default function Login() {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
       setUserName(storedUser);
       setAuthState(AuthState.Authenticated);

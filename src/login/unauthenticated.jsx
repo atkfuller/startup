@@ -11,7 +11,7 @@ export function Unauthenticated({userName, onLogin}) {
       setDisplayError("Please enter both email and password.");
       return;
     }
-    localStorage.setItem("user", email);
+    localStorage.setItem("currentUser", email);
     onLogin(email);
   }
   async function handleRegister(e) {
@@ -20,7 +20,7 @@ export function Unauthenticated({userName, onLogin}) {
       setDisplayError("Please enter both email and password.");
       return;
     }
-    localStorage.setItem("user", email);
+    localStorage.setItem("currentUser", email);
     onLogin(email);
   }
   function handleSubmit(e) {

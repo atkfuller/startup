@@ -8,7 +8,7 @@ export function Authenticated(props) {
   const navigate = useNavigate();
 
   function logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('currentUser');
     props.onLogout();
   }
 
