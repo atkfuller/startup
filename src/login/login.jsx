@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
-import { Calendar } from '../calendar/calendar.jsx';
+import Calendar from '../calendar/calendar.jsx';
 
 export default function Login() {
   const navigate = useNavigate();
