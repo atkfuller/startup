@@ -25,7 +25,6 @@ export function Unauthenticated({userName, onLogin}) {
   }
   return (
     <main className="login_page">
-        <div className='main-container'>
         <h2 className='sign-in-text'>
             Sign In
         </h2>
@@ -52,8 +51,7 @@ export function Unauthenticated({userName, onLogin}) {
         <Button variant='secondary' onClick={() => handleRegister()} disabled={!email || !password}>
           Create
         </Button>
-         </form>
-        </div>  
+         </form> 
      </main>
 
   );
