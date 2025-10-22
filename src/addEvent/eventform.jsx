@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./eventform.css";
 import { useNavigate } from "react-router-dom";
-console.log("AddEvent current user:", localStorage.getItem("currentUser"));
+
 export default function AddEvent() {
+  console.log("AddEvent current user:", localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const [eventTitle, setTitle] = useState("");
   const [startTime, setStartTime] = useState("");
