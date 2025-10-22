@@ -23,10 +23,6 @@ export function Unauthenticated({userName, onLogin}) {
     localStorage.setItem("currentUser", email);
     onLogin(email);
   }
-  function handleSubmit(e) {
-    e.preventDefault();
-    handleLogin();
-  }
   return (
     <main className="login_page">
         <h1 className='gradient-title'>

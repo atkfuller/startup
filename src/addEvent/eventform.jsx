@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./eventform.css";
 import { useNavigate } from "react-router-dom";
-
+console.log("AddEvent current user:", localStorage.getItem("currentUser"));
 export default function AddEvent() {
   const navigate = useNavigate();
   const [eventTitle, setTitle] = useState("");

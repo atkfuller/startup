@@ -618,6 +618,7 @@ Which of the following correctly describes JSON?
 JSON (JavaScript Object Notation) is a text-based format for structured data using key-value pairs. Example: {
 "name": "John", "age": 25 }
 
+
 What will the following code using Promises output when executed?
 Many possibilities depending on promise behavior. Examples:
 1) Promise.resolve('Done').then(console.log) -> 'Done'
@@ -699,6 +700,9 @@ Core Concepts
 Selectors
 
 Selector	Example	Meaning
+
+# id
+. class
 ID	#title	Selects element with id="title"
 Class	.grid	Selects all elements with class="grid"
 Element	p	Selects all <p> tags
@@ -789,6 +793,7 @@ filter() → keep elements matching a condition
 forEach() → run function for each element
 
 reduce() → combine values
+
 
 🧩 4. The DOM — Document Object Model
 Core Concepts
