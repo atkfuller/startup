@@ -41,17 +41,19 @@
      color: white;
      font-weight: 700;
  }
-    .input-group {
-        display: flex;
-        flex-direction: column;
-        margin: 0.5rem 0;
-        width: 300px;
-        max-width: 80vw;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 0.5rem;
-        background: #fff;
-    }
+ .inputgroup {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.inputgroup input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
 
  .input-group:focus-within {
      border: 1px solid #6a11cb;
