@@ -130,7 +130,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **Hooks** - I used useState and useEffect. Espcially the useEffect is used to so everytime it loads that it displays the current users events.
 
 ## 🚀 Service deliverable
 

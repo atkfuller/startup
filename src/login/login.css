@@ -69,12 +69,27 @@
      cursor: pointer;
      font-weight: 600;
  }
-    button.primary {
+button.primary {
         background: #6a11cb;
         color: white;
         border: none;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
+.reminder-popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #007bff;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  animation: fadeInOut 10s ease forwards;
+  z-index: 1000;
+}
+
 
  @media (max-width: 640px) {
      .gradient-text-h1 {

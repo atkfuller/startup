@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 export default function Calendar(props) {
   const [events, setEvents] = useState([]);
+  const [reminder, setReminder] = useState(null);
   const navigate = useNavigate();
   function logout() {
     localStorage.removeItem('currentUser');
@@ -12,11 +13,26 @@ export default function Calendar(props) {
   }
 
   useEffect(() => {
-    const username = localStorage.getItem("currentUser");
-    if (username) {
+    const interval = setInterval(() => {
+      const username = localStorage.getItem("currentUser");
+      if (!username) return;
+
       const userEvents = JSON.parse(localStorage.getItem(username)) || [];
-      setEvents(userEvents);
-    }
+      const now = new Date();
+
+      const upcoming = userEvents.find(ev => {
+        const eventTime = new Date(ev.startTime);
+        const diffMinutes = (eventTime - now) / 60000;
+        return diffMinutes > 0 && diffMinutes <= 5;
+      });
+
+      if (upcoming) {
+        setReminder(`🔔 Reminder: "${upcoming.eventTitle}" starts soon!`);
+        setTimeout(() => setReminder(null), 10000);
+      }
+    }, 60000); 
+
+    return () => clearInterval(interval);
   }, []);
 
   const today = new Date();
@@ -118,6 +134,11 @@ export default function Calendar(props) {
         Logout
       </Button>
       </div>
+      {reminder && (
+        <div className="reminder-popup">
+          {reminder}
+        </div>
+      )}
     </div>
   );
 }
