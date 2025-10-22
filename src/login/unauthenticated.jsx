@@ -15,7 +15,6 @@ export function Unauthenticated({userName, onLogin}) {
     onLogin(email);
   }
   async function handleRegister(e) {
-     e.preventDefault();
     if (!email || !password) {
       setDisplayError("Please enter both email and password.");
       return;
