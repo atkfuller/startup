@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./calendar.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Calendar(props) {
+export function Calendar(props) {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
   function logout() {
