@@ -32,7 +32,7 @@ export function Unauthenticated({userName, onLogin}) {
         <h2 className='sign-in-text'>
             Sign In
         </h2>
-         <form onSubmit={handleSubmit} className="w-full max-w-sm px-6">
+         <form className="w-full max-w-sm px-6">
             <div className='inputgroup'>
                 <input
                 type="text"

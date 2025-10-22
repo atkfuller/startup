@@ -24,10 +24,6 @@ export default function Login() {
     setUserName(user);
     setAuthState(newState);
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/calendar");
-  };
 
   return (
      <div className="flex flex-col items-center min-h-screen w-full bg-white text-gray-700">
@@ -38,7 +34,7 @@ export default function Login() {
          <div>
         {authState !== AuthState.Unknown && <h1>Welcome to Ultimate Calendar</h1>}
         {authState === AuthState.Authenticated && (
-          <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
+          <Calendar calendarUser={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
         )}
         {authState === AuthState.Unauthenticated && (
           <Unauthenticated

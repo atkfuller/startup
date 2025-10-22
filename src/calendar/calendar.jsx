@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./calendar.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Calendar() {
+export default function Calendar(props) {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
+  function logout() {
+    localStorage.removeItem('currentUser');
+    props.onLogout();
+  }
 
   useEffect(() => {
     const username = localStorage.getItem("currentUser");
@@ -109,6 +113,12 @@ export default function Calendar() {
           ))}
         </tbody>
       </table>
+      <div className='logout-section'>
+    <h2>Welcome, {props.userName}</h2>
+      <Button variant='secondary' onClick={() => logout()}>
+        Logout
+      </Button>
+      </div>
     </div>
   );
 }
