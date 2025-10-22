@@ -25,9 +25,6 @@ export function Unauthenticated({userName, onLogin}) {
   }
   return (
     <main className="login_page">
-        <h1 className='gradient-title'>
-            ULTIMATE CALENDAR
-        </h1>
         <div className='main-container'>
         <h2 className='sign-in-text'>
             Sign In
