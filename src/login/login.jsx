@@ -33,11 +33,10 @@ export default function Login() {
 
         <main className="main-container">
          <div>
-        {authState !== AuthState.Unknown && <h1>Welcome to Ultimate Calendar</h1>}
         {authState === AuthState.Authenticated && (
           <Calendar calendarUser={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
         )}
-        {authState === AuthState.Unauthenticated && (
+        {authState === AuthState.Unauthenticated &&(
           <Unauthenticated
             userName={userName}
             onLogin={(loginUserName) => {

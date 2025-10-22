@@ -49,8 +49,7 @@ export default function Calendar(props) {
 
   return (
     <div className="calendar-page">
-      <h1>Welcome to Ultimate Calendar</h1>
-
+      <h2>Welcome, {props.userName}</h2>
       <div style={{ textAlign: "center", margin: "20px" }}>
         <button onClick={() => navigate("/addEvent")}>+</button>
       </div>
@@ -115,7 +114,6 @@ export default function Calendar(props) {
         </tbody>
       </table>
       <div className='logout-section'>
-    <h2>Welcome, {props.userName}</h2>
       <Button variant='secondary' onClick={() => logout()}>
         Logout
       </Button>
