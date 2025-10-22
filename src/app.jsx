@@ -16,7 +16,7 @@ export default function App() {
     <Route path='/' element={<Login />} exact />
     <Route path='/addEvent' element={<AddEvent setEvents={setEvents}/>} />
     <Route path='/calendar' element={<Calendar events={events} />} />
-    <Route path='/event' element={<Event />} />
+    <Route path="/event/:id" element={<Event />} />
     <Route path='*' element={<NotFound />} />
   </Routes>
       <footer>
