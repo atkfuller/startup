@@ -11,6 +11,13 @@ export default function Calendar(props) {
     localStorage.removeItem('currentUser');
     props.onLogout();
   }
+  useEffect(() => { 
+    const username = localStorage.getItem("currentUser"); 
+    if (username) { 
+      const userEvents = JSON.parse(localStorage.getItem(username)) || []; 
+      setEvents(userEvents); 
+    } 
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
