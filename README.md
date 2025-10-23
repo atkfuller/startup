@@ -129,7 +129,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - The login page works and goes to the calendar you can add new events and it appears in the calendar. I tried to get the reminder system working and there currently is a placeholder for it in the code but it is showing up. 
 - [x] **Hooks** - I used useState and useEffect. Espcially the useEffect is used to so everytime it loads that it displays the current users events.
 
 ## 🚀 Service deliverable
