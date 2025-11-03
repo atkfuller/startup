@@ -13,11 +13,18 @@ export default function Calendar(props) {
   }
   useEffect(() => { 
     fetch('/api/events')
-      .then((response) => response.json())
-      .then((events) => {
-        console.log("Fetched events:", events);
-        setEvents(events);
-      });
+      .then((response) =>{
+        if (res.ok) {
+          const data = res.json();
+          setEvents(data);
+        } else if (res.status === 401) {
+          onLogout(); // user not logged in
+        } else {
+          const body = res.json();
+          setError(body?.msg || "Failed to load events");
+        }
+      })
+      
   }, []);
 
   useEffect(() => {
