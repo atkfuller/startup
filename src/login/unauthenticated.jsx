@@ -6,14 +6,14 @@ export function Unauthenticated({userName, onLogin}) {
   const [email, setEmail] = React.useState(userName || '');
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
-  async function handleLogin(e) {
+  async function handleLogin() {
     if (!email || !password) {
       setDisplayError("Please enter both email and password.");
       return;
     }
     signInUser(`/api/auth/login`);
   }
-  async function handleRegister(e) {
+  async function handleRegister() {
     if (!email || !password) {
       setDisplayError("Please enter both email and password.");
       return;
@@ -23,7 +23,7 @@ export function Unauthenticated({userName, onLogin}) {
   async function signInUser(endpoint) {
     const response = await fetch(endpoint, {
       method: 'POST',
-      body: JSON.stringify({ email: userName, password: password }),
+      body: JSON.stringify({email, password}),
       headers: {
          'Content-type': 'application/json; charset=UTF-8',
       },
@@ -32,6 +32,7 @@ export function Unauthenticated({userName, onLogin}) {
       localStorage.setItem("currentUser", email);
       onLogin(email);
     }else{
+      console.log("Login failed", response);
       const body=await response.json();
       setDisplayError(body?.msg || 'Login failed');
     }
