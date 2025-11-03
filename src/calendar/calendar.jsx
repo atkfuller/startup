@@ -15,6 +15,7 @@ export default function Calendar(props) {
     fetch('/api/scores')
       .then((response) => response.json())
       .then((events) => {
+        console.log("Fetched events:", events);
         setEvents(events);
       });
   }, []);
