@@ -12,7 +12,7 @@ export default function Calendar(props) {
     props.onLogout();
   }
   useEffect(() => { 
-    fetch('/api/scores')
+    fetch('/api/events')
       .then((response) => response.json())
       .then((events) => {
         console.log("Fetched events:", events);
