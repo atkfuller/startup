@@ -86,8 +86,15 @@ apiRouter.get('/events', verifyAuth, async (req, res) => {
         endTime:"2025-11-04T11:00",
         description:"This is a test event"
     }
+    if (!eventsByUser[user.email]) {
+    eventsByUser[user.email] = [];
+  }
+
+  if (eventsByUser[user.email].length === 0) {
+    eventsByUser[user.email].push(testEvent);
+  }
+  res.json(eventsByUser[user.email]);
     eventsByUser[user.email] = testEvent;
-    res.send(eventsByUser[user.email] || []);
 });
 // add new events for authenticated user
 apiRouter.post('/events', verifyAuth, async (req, res) => {

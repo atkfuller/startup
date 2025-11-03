@@ -20,18 +20,18 @@ export default function Calendar(props) {
       });
   }
   useEffect(() => { 
-    fetch('/api/events')
-      .then((response) =>{
+    fetch('/api/events', {credentials: 'include'})
+      .then(async (response) =>{
         if (response.ok) {
-          const data = response.json();
+          const data = await response.json();
           setEvents(data);
         } else if (response.status === 401) {
-          onLogout(); // user not logged in
+          props.onLogout(); // user not logged in
         } else {
-          const body = response.json();
+          const body = await response.json();
           setError(body?.msg || "Failed to load events");
         }
-      })
+      }).catch((err) => console.error("Fetch error:", err));
       
   }, []);
 
