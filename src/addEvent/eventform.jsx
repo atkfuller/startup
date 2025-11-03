@@ -10,7 +10,7 @@ export default function AddEvent() {
   const [endTime, setEndTime] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const currentUser = localStorage.getItem("currentUser");
@@ -27,8 +27,15 @@ export default function AddEvent() {
       endTime,
       description,
     };
+    const res = await fetch("/api/events", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ eventTitle, startTime, endTime, description}),
+    });
     const existingEvents = JSON.parse(localStorage.getItem(currentUser)) || [];
     const updatedEvents = [...existingEvents, newEvent];
+
     localStorage.setItem(currentUser, JSON.stringify(updatedEvents));
 
     navigate("/calendar");

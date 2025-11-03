@@ -79,7 +79,26 @@ app.use((_req, res) => {
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     console.log("retrieving users", user.email);
+    const testEvent={
+        id:1,
+        eventTitle:"Test Event",
+        startTime:"2025-11-04T10:00",
+        endTime:"2025-11-04T11:00",
+        description:"This is a test event"
+    }
+    eventsByUser[user.email] = testEvent;
     res.send(eventsByUser[user.email] || []);
+});
+// add new events for authenticated user
+apiRouter.post('/events', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    console.log("saving event for user", user.email, req.body);
+    if (!eventsByUser[user.email]) {
+        eventsByUser[user.email] = [];
+    }
+
+    eventsByUser[user.email].push(req.body);
+    res.status(201).end();
 });
 
 async function createUser(email, password) {

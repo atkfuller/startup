@@ -15,13 +15,8 @@ export default function Calendar(props) {
     fetch('/api/scores')
       .then((response) => response.json())
       .then((events) => {
-        console.log("Fetched events:", events);
+        setEvents(events);
       });
-    const username = localStorage.getItem("currentUser"); 
-    if (username) { 
-      const userEvents = JSON.parse(localStorage.getItem(username)) || []; 
-      setEvents(userEvents); 
-    } 
   }, []);
 
   useEffect(() => {
