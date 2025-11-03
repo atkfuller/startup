@@ -8,19 +8,27 @@ export default function Calendar(props) {
   const [reminder, setReminder] = useState(null);
   const navigate = useNavigate();
   function logout() {
-    localStorage.removeItem('currentUser');
-    props.onLogout();
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
   }
   useEffect(() => { 
     fetch('/api/events')
       .then((response) =>{
-        if (res.ok) {
-          const data = res.json();
+        if (response.ok) {
+          const data = response.json();
           setEvents(data);
-        } else if (res.status === 401) {
+        } else if (response.status === 401) {
           onLogout(); // user not logged in
         } else {
-          const body = res.json();
+          const body = response.json();
           setError(body?.msg || "Failed to load events");
         }
       })
