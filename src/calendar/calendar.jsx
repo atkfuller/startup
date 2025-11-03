@@ -12,6 +12,9 @@ export default function Calendar(props) {
     props.onLogout();
   }
   useEffect(() => { 
+    fetch('/api/events').then(res => res.json()).then(data => {
+      console.log("Fetched events:", data);
+    });
     const username = localStorage.getItem("currentUser"); 
     if (username) { 
       const userEvents = JSON.parse(localStorage.getItem(username)) || []; 

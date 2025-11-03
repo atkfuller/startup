@@ -6,6 +6,7 @@ const app = express();
 
 const authCookieName = 'token';
 const users = [];
+const eventsByUser = {};
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
@@ -74,6 +75,12 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
+// get events for authenticated user
+apiRouter.get('/events', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    console.log("retrieving users", user.email);
+    res.send(eventsByUser[user.email] || []);
+});
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
