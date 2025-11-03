@@ -11,17 +11,33 @@ export function Unauthenticated({userName, onLogin}) {
       setDisplayError("Please enter both email and password.");
       return;
     }
-    localStorage.setItem("currentUser", email);
-    onLogin(email);
+    signInUser(`/api/auth/login`);
   }
   async function handleRegister(e) {
     if (!email || !password) {
       setDisplayError("Please enter both email and password.");
       return;
     }
-    localStorage.setItem("currentUser", email);
-    onLogin(email);
+    signInUser(`/api/auth/create`);
   }
+  async function signInUser(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify({ email: userName, password: password }),
+      headers: {
+         'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if(response?.status===200){
+      localStorage.setItem("currentUser", email);
+      onLogin(email);
+    }else{
+      const body=await response.json();
+      setDisplayError(body?.msg || 'Login failed');
+    }
+
+  }
+
   return (
     <main className="login_page">
         <h2 className='sign-in-text'>
