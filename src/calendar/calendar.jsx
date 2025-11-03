@@ -24,6 +24,7 @@ export default function Calendar(props) {
       .then(async (response) =>{
         if (response.ok) {
           const data = await response.json();
+          console.log("Fetched events:", data); 
           setEvents(data);
         } else if (response.status === 401) {
           props.onLogout(); // user not logged in
