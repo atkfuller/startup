@@ -9,11 +9,22 @@ import  Event  from './event/event.jsx';
 
 export default function App() {
   const [events, setEvents] = useState([]);
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
   return (
     <BrowserRouter>
     <div className='body'>
       <Routes>
-    <Route path='/' element={<Login />} exact />
+    <Route path='/' element={<Login
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />
+            } exact />
     <Route path='/addEvent' element={<AddEvent setEvents={setEvents}/>} />
     <Route path='/calendar' element={<Calendar events={events} />} />
     <Route path="/event/:id" element={<Event />} />
