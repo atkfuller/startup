@@ -8,17 +8,21 @@ export default function Event() {
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
-    const currentUser = localStorage.getItem("currentUser");
-    if (!currentUser) {
-      alert("No user logged in! Please log in first.");
-      navigate("/");
-      return;
-    }
-
-    const storedEvents = JSON.parse(localStorage.getItem(currentUser)) || [];
-    const foundEvent = storedEvents.find((e) => e.id === Number(id));
-    setEvent(foundEvent);
-  }, [id, navigate]);
+  fetch(`/api/events/${id}`, { credentials: 'include' })
+    .then(async (response) => {
+      if (response.ok) {
+        const data = await response.json();
+        setEvent(data);
+      } else if (response.status === 404) {
+        console.warn("Event not found");
+        setEvent(null);
+      } else if (response.status === 401) {
+        alert("Please log in again.");
+        navigate("/");
+      }
+    })
+    .catch((err) => console.error("Failed to fetch event:", err));
+}, [id, navigate]);
 
   if (!event) {
     return (

@@ -11,7 +11,6 @@ const eventsByUser = {};
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static('public'));
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
@@ -75,26 +74,26 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// get events for authenticated user
-// apiRouter.get('/events', verifyAuth, async (req, res) => {
-//     const user = await findUser('token', req.cookies[authCookieName]);
-//     console.log("retrieving users", user.email);
-//     if (!Array.isArray(eventsByUser[user.email])) {
-//     eventsByUser[user.email] = [];
-//   }
+//get events for authenticated user
+apiRouter.get('/events', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    console.log("retrieving users", user.email);
+    if (!Array.isArray(eventsByUser[user.email])) {
+    eventsByUser[user.email] = [];
+  }
 
-//   if (eventsByUser[user.email].length === 0) {
-//     const testEvent = {
-//       id: 1,
-//       eventTitle: "Test Event",
-//       startTime: "2025-11-04T10:00",
-//       endTime: "2025-11-04T11:00",
-//       description: "This is a test event"
-//     };
-//     eventsByUser[user.email].push(testEvent);
-//   }
-//   res.json(eventsByUser[user.email]);
-// });
+  if (eventsByUser[user.email].length === 0) {
+    const testEvent = {
+      id: 1,
+      eventTitle: "Test Event",
+      startTime: "2025-11-04T10:00",
+      endTime: "2025-11-04T11:00",
+      description: "This is a test event"
+    };
+    eventsByUser[user.email].push(testEvent);
+  }
+  res.json(eventsByUser[user.email]);
+});
 
 // add new events for authenticated user
 apiRouter.post('/events', verifyAuth, async (req, res) => {
@@ -109,6 +108,23 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
   eventsByUser[user.email].push(newEvent);
   res.send(newEvent);
 });
+// get event by id 
+apiRouter.get('/events/:id', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  const userEvents = eventsByUser[user.email] || [];
+
+  const eventId = parseInt(req.params.id, 10);
+  const event = userEvents.find((ev) => ev.id === eventId);
+
+  if (!event) {
+    res.status(404).send({ msg: 'Event not found' });
+  } else {
+     console.log(`Returning event ${eventId} for user ${user.email}`);
+    res.json(event);
+  }
+});
+
+app.use(express.static('public'));
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
