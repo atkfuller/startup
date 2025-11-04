@@ -76,35 +76,38 @@ app.use((_req, res) => {
 });
 
 // get events for authenticated user
-apiRouter.get('/events', verifyAuth, async (req, res) => {
-    const user = await findUser('token', req.cookies[authCookieName]);
-    console.log("retrieving users", user.email);
-    if (!Array.isArray(eventsByUser[user.email])) {
-    eventsByUser[user.email] = [];
-  }
+// apiRouter.get('/events', verifyAuth, async (req, res) => {
+//     const user = await findUser('token', req.cookies[authCookieName]);
+//     console.log("retrieving users", user.email);
+//     if (!Array.isArray(eventsByUser[user.email])) {
+//     eventsByUser[user.email] = [];
+//   }
 
-  if (eventsByUser[user.email].length === 0) {
-    const testEvent = {
-      id: 1,
-      eventTitle: "Test Event",
-      startTime: "2025-11-04T10:00",
-      endTime: "2025-11-04T11:00",
-      description: "This is a test event"
-    };
-    eventsByUser[user.email].push(testEvent);
-  }
-  res.json(eventsByUser[user.email]);
-});
+//   if (eventsByUser[user.email].length === 0) {
+//     const testEvent = {
+//       id: 1,
+//       eventTitle: "Test Event",
+//       startTime: "2025-11-04T10:00",
+//       endTime: "2025-11-04T11:00",
+//       description: "This is a test event"
+//     };
+//     eventsByUser[user.email].push(testEvent);
+//   }
+//   res.json(eventsByUser[user.email]);
+// });
+
 // add new events for authenticated user
 apiRouter.post('/events', verifyAuth, async (req, res) => {
-    const user = await findUser('token', req.cookies[authCookieName]);
-    console.log("saving event for user", user.email, req.body);
-    if (!eventsByUser[user.email]) {
-        eventsByUser[user.email] = [];
-    }
+  const user = await findUser('token', req.cookies[authCookieName]);
+  console.log("Saving event for user", user.email, req.body);
 
-    eventsByUser[user.email].push(req.body);
-    res.status(201).end();
+  const newEvent = {
+    ...req.body,
+    id: eventsByUser[user.email].length + 1, 
+  };
+  console.log("New event created:", newEvent);
+  eventsByUser[user.email].push(newEvent);
+  res.send(newEvent);
 });
 
 async function createUser(email, password) {
@@ -130,9 +133,9 @@ async function findUser(field, value) {
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     maxAge: 1000 * 60 * 60 * 24 * 365,
-    secure: true,
+    secure: false,
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'lax',
   });
 }
 
