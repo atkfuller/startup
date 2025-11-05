@@ -13,6 +13,10 @@ export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
+  function handleLogout() {
+  localStorage.removeItem("currentUser");
+  navigate("/login"); 
+  }
   return (
     <BrowserRouter>
     <div className='body'>
@@ -27,7 +31,7 @@ export default function App() {
               />
             } exact />
     <Route path='/addEvent' element={<AddEvent setEvents={setEvents}/>} />
-    <Route path='/calendar' element={<Calendar events={events} />} />
+    <Route path='/calendar' element={<Calendar events={events} onLogout={handleLogout} />} />
     <Route path="/event/:id" element={<Event />} />
     <Route path='*' element={<NotFound />} />
   </Routes>

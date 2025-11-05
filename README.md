@@ -136,12 +136,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I completed this installed all the ndoes
+- [x] **Static middleware for frontend** - I completed this
+- [x] **Calls to third party endpoints** - I completed this I used calenderific holiday api to add public holidays to my calendar
+- [x] **Backend service endpoints** - I created service endpoints to login, register, and to add events also to get events
+- [x] **Frontend calls service endpoints** - This is used to recieve the events stored by user and also to add events
+- [x] **Supports registration, login, logout, and restricted endpoint** - This allows for login and logout, also for registering. 
 
 
 ## 🚀 DB deliverable

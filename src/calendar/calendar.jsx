@@ -9,8 +9,8 @@ export default function Calendar(props) {
   const navigate = useNavigate();
   function logout() {
     fetch(`/api/auth/logout`, {
-      method: 'delete',
-      include: 'credentials',
+      method: 'DELETE',
+      credentials: 'include',
     }).then((response) => {
       console.log("Logout response:", response.status);
       if (!response.ok && response.status !== 204) {
@@ -23,7 +23,8 @@ export default function Calendar(props) {
         // Logout failed. Assuming offline
       })
       .finally(() => {
-        props.onLogout();
+        localStorage.removeItem("currentUser");
+        navigate("/");
       });
   }
   useEffect(() => {
