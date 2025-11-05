@@ -1,6 +1,8 @@
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
+const path = require("path");
+const cors = require("cors");
 const uuid = require('uuid');
 const app = express();
 
