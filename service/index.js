@@ -185,7 +185,23 @@ function setAuthCookie(res, authToken) {
     sameSite: 'lax',
   });
 }
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
 
+// ✅ Fallback: send index.html for any unknown route (for React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
+// ✅ Global error handler (keep at end)
+app.use(function (err, req, res, next) {
+  console.error("Internal error:", err);
+  res.status(500).send({ type: err.name, message: err.message });
+});
+
+app.listen(port, () => {
+  console.log(`✅ Service running on port ${port}`);
+});
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
