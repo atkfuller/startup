@@ -172,8 +172,10 @@ export default function Calendar(props) {
                                   display: "block",
                                   width: "100%",
                                   marginTop: "5px",
-                                  backgroundColor: ev.id.startsWith("holiday-") ? "#ffeeba" : "",
-                                  border: "none",           
+                                  backgroundColor: String(ev.id).startsWith("holiday-") ? "#a39ff7ff" : "" ,
+                                  border: "none",      
+                                  fontSize: String(ev.id).startsWith("holiday-") ? "10px" :"12px",
+                                  opacity: String(ev.id).startsWith("holiday-") ? "0.5" : "1.0",
                                 }}
                             >
                               {ev.eventTitle}
