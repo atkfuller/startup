@@ -133,14 +133,23 @@ apiRouter.get('/holidays/:year/:country', async (req, res) => {
     if (!response.ok) throw new Error('Failed to fetch holidays');
 
     const data = await response.json();
-    const holidays = data.response.holidays.map((h, index) => ({
+    const allHolidays = data.response.holidays.map((h, index) => ({
       id: `holiday-${index}`,
       name: h.name,
       description: h.description || "Holiday",
       date: { iso: h.date.iso }
     }));
+    const uniqueHolidays = [];
+    const seen = new Set();
+    for (const h of allHolidays) {
+      const key = `${h.name}-${h.date}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        uniqueHolidays.push(h);
+      }
+    }
 
-    res.json(holidays);
+    res.json(uniqueHolidays);
   } catch (err) {
     console.error('Holiday fetch failed:', err);
     res.status(500).send({ msg: 'Error fetching holidays' });

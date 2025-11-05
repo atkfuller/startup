@@ -169,10 +169,12 @@ export default function Calendar(props) {
                             <button
                               onClick={() => navigate(`/event/${ev.id}`)}
                               style={{
-                                display: "block",
-                                width: "100%",
-                                marginTop: "5px"
-                              }}
+                                  display: "block",
+                                  width: "100%",
+                                  marginTop: "5px",
+                                  backgroundColor: ev.id.startsWith("holiday-") ? "#ffeeba" : "",
+                                  border: "none",           
+                                }}
                             >
                               {ev.eventTitle}
                             </button>
