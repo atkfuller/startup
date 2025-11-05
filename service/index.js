@@ -155,7 +155,7 @@ apiRouter.get('/holidays/:year/:country', async (req, res) => {
     res.status(500).send({ msg: 'Error fetching holidays' });
   }
 });
-
+app.use(express.static('public'));
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
