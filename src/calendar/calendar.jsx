@@ -40,9 +40,9 @@ export default function Calendar(props) {
       const holidayEvents = holidays.map((h, index) => ({
         id: `holiday-${index}`,
         eventTitle: h.name,
-        startTime: `${h.date}T00:00`,
-        endTime: `${h.date}T23:59`,
-        description: `Public Holiday (${h.type})`,
+        startTime: h.date.iso,
+        endTime: h.date.iso,
+        description: h.description || "Holiday",
       }));
 
       setEvents([...events, ...holidayEvents]);

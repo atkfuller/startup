@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
@@ -8,7 +7,7 @@ const app = express();
 const authCookieName = 'token';
 const users = [];
 const eventsByUser = {};
-const ABSTRACT_API_KEY ="0f142ea91c08415e8a1cfa6b8132c23a";
+const API_KEY ="4IAp9ocJBJ8fTCqkheTGm8UnkwJAFox7";
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
@@ -128,11 +127,19 @@ apiRouter.get('/events/:id', verifyAuth, async (req, res) => {
 // get holidays for holiday api
 apiRouter.get('/holidays/:year/:country', async (req, res) => {
   const { year, country } = req.params;
+  const url= `https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=${country}&year=${year}`;
   try {
-    const response = await fetch(`//holidays.abstractapi.com/v1/?api_key=${ABSTRACT_API_KEY}&country=${country}&year=${year}`);
+    const response = await fetch(url);
     if (!response.ok) throw new Error('Failed to fetch holidays');
 
-    const holidays = await response.json();
+    const data = await response.json();
+    const holidays = data.response.holidays.map((h, index) => ({
+      id: `holiday-${index}`,
+      name: h.name,
+      description: h.description || "Holiday",
+      date: { iso: h.date.iso }
+    }));
+
     res.json(holidays);
   } catch (err) {
     console.error('Holiday fetch failed:', err);
