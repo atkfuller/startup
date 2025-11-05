@@ -10,31 +10,65 @@ export default function Calendar(props) {
   function logout() {
     fetch(`/api/auth/logout`, {
       method: 'delete',
+      include: 'credentials',
+    }).then((response) => {
+      console.log("Logout response:", response.status);
+      if (!response.ok && response.status !== 204) {
+        return response.text().then((text) => {
+          throw new Error(`Logout failed: ${text}`);
+        });
+      }
     })
       .catch(() => {
         // Logout failed. Assuming offline
       })
       .finally(() => {
-        localStorage.removeItem('userName');
         props.onLogout();
       });
   }
-  useEffect(() => { 
-    fetch('/api/events', {credentials: 'include'})
-      .then(async (response) =>{
-        if (response.ok) {
-          const data = await response.json();
-          console.log("Fetched events:", data); 
-          setEvents(data);
-        } else if (response.status === 401) {
-          props.onLogout(); // user not logged in
-        } else {
-          const body = await response.json();
-          setError(body?.msg || "Failed to load events");
-        }
-      }).catch((err) => console.error("Fetch error:", err));
+  useEffect(() => {
+  async function fetchData() {
+    try {
+      const [eventsRes, holidaysRes] = await Promise.all([
+        fetch("/api/events", { credentials: "include" }),
+        fetch("/api/holidays/2025/US"),
+      ]);
+
+      const events = eventsRes.ok ? await eventsRes.json() : [];
+      const holidays = holidaysRes.ok ? await holidaysRes.json() : [];
+
+      const holidayEvents = holidays.map((h, index) => ({
+        id: `holiday-${index}`,
+        eventTitle: h.name,
+        startTime: `${h.date}T00:00`,
+        endTime: `${h.date}T23:59`,
+        description: `Public Holiday (${h.type})`,
+      }));
+
+      setEvents([...events, ...holidayEvents]);
+    } catch (err) {
+      console.error("Error fetching events/holidays:", err);
+    }
+  }
+
+  fetchData();
+}, []);
+  // useEffect(() => { 
+  //   fetch('/api/events', {credentials: 'include'})
+  //     .then(async (response) =>{
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log("Fetched events:", data); 
+  //         setEvents(data);
+  //       } else if (response.status === 401) {
+  //         props.onLogout(); // user not logged in
+  //       } else {
+  //         const body = await response.json();
+  //         setError(body?.msg || "Failed to load events");
+  //       }
+  //     }).catch((err) => console.error("Fetch error:", err));
       
-  }, []);
+  // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
