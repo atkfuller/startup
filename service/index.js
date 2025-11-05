@@ -2,7 +2,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const path = require("path");
-const cors = require("cors");
+
 const uuid = require('uuid');
 const app = express();
 
@@ -157,7 +157,6 @@ apiRouter.get('/holidays/:year/:country', async (req, res) => {
     res.status(500).send({ msg: 'Error fetching holidays' });
   }
 });
-app.use(express.static('public'));
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
@@ -186,6 +185,24 @@ function setAuthCookie(res, authToken) {
     sameSite: 'lax',
   });
 }
+// ✅ Serve the frontend build from the "public" folder (created by deploy script)
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
+
+// ✅ Fallback: send index.html for any unknown route (for React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
+// ✅ Global error handler (keep at end)
+app.use(function (err, req, res, next) {
+  console.error("Internal error:", err);
+  res.status(500).send({ type: err.name, message: err.message });
+});
+
+app.listen(port, () => {
+  console.log(`✅ Service running on port ${port}`);
+});
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
