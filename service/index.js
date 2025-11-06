@@ -73,10 +73,9 @@ app.use(function (err, req, res, next) {
 });
 
 // Return the application's default page if the path is unknown
-app.use((_req, res) => {
-  res.sendFile('index.html', { root: 'public' });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
 //get events for authenticated user
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
@@ -157,7 +156,7 @@ apiRouter.get('/holidays/:year/:country', async (req, res) => {
     res.status(500).send({ msg: 'Error fetching holidays' });
   }
 });
-app.use(express.static('public'));
+
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
