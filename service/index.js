@@ -171,7 +171,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Return the application's default page if the path is unknown
-app.get('/:path(*)', (req, res) => {
+app.get('/)', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 // setAuthCookie in the HTTP response
