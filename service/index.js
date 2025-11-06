@@ -64,18 +64,6 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-
-
-// Default error handler
-app.use(function (err, req, res, next) {
-    console.error("Internal error:", err);
-  res.status(500).send({ type: err.name, message: err.message });
-});
-
-// Return the application's default page if the path is unknown
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 //get events for authenticated user
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
@@ -175,7 +163,17 @@ async function findUser(field, value) {
 
   return users.find((u) => u[field] === value);
 }
+app.use(express.static('public'));
+// Default error handler
+app.use(function (err, req, res, next) {
+    console.error("Internal error:", err);
+  res.status(500).send({ type: err.name, message: err.message });
+});
 
+// Return the application's default page if the path is unknown
+app.get('/:path(*)', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
