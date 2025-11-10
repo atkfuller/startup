@@ -71,21 +71,8 @@ const verifyAuth = async (req, res, next) => {
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     console.log("retrieving users", user.email);
-    if (!Array.isArray(eventsByUser[user.email])) {
-    eventsByUser[user.email] = [];
-  }
-
-  if (eventsByUser[user.email].length === 0) {
-    const testEvent = {
-      id: 1,
-      eventTitle: "Test Event",
-      startTime: "2025-11-04T10:00",
-      endTime: "2025-11-04T11:00",
-      description: "This is a test event"
-    };
-    eventsByUser[user.email].push(testEvent);
-  }
-  res.json(eventsByUser[user.email]);
+    const events= DB.getEventsByUser(user.email);
+    res.json(events);
 });
 
 // add new events for authenticated user
@@ -98,13 +85,13 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
     id: eventsByUser[user.email].length + 1, 
   };
   console.log("New event created:", newEvent);
-  eventsByUser[user.email].push(newEvent);
+  await DB.addEventbyUser(user.email, newEvent);
   res.send(newEvent);
 });
 // get event by id 
 apiRouter.get('/events/:id', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  const userEvents = eventsByUser[user.email] || [];
+  const userEvents = DB.getEventsByUser(user.email);
 
   const eventId = parseInt(req.params.id, 10);
   const event = userEvents.find((ev) => ev.id === eventId);

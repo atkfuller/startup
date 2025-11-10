@@ -39,8 +39,8 @@ async function addHolidays(holidays){
 async function getHolidays(){
     return holidayCollection.find({}).toArray();
 }
-async function addEvent(event){
-    await eventsCollection.insertOne(event);
+async function addEventbyUser(email, event){
+    await eventsCollection.insertOne({...event, userEmail: email});
 }
 async function getEventsByUser(email){
     return eventsCollection.find({userEmail: email}).toArray();
@@ -52,6 +52,9 @@ module.exports = {
   getUserByToken,
   addUser,
   updateUser,
-  
+  addHolidays,
+  getHolidays,
+  getEventsByUser,
+  addEventbyUser,
 };
 
