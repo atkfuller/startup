@@ -37,6 +37,8 @@ export default function Calendar(props) {
 
       const events = eventsRes.ok ? await eventsRes.json() : [];
       const holidays = holidaysRes.ok ? await holidaysRes.json() : [];
+      console.log("Fetched events:", events);
+      console.log("Fetched holidays:", holidays);
 
       const holidayEvents = holidays.map((h, index) => ({
         id: `holiday-${index}`,

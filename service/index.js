@@ -71,7 +71,7 @@ const verifyAuth = async (req, res, next) => {
 apiRouter.get('/events', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     console.log("retrieving users", user.email);
-    const events= DB.getEventsByUser(user.email);
+    const events= await DB.getEventsByUser(user.email);
     res.json(events);
 });
 
