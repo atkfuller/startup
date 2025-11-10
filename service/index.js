@@ -82,7 +82,7 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
 
   const newEvent = {
     ...req.body,
-    id: eventsByUser[user.email].length + 1, 
+    id: uuid.v4(), 
   };
   console.log("New event created:", newEvent);
   await DB.addEventbyUser(user.email, newEvent);
@@ -91,10 +91,9 @@ apiRouter.post('/events', verifyAuth, async (req, res) => {
 // get event by id 
 apiRouter.get('/events/:id', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  const userEvents = DB.getEventsByUser(user.email);
 
-  const eventId = parseInt(req.params.id, 10);
-  const event = userEvents.find((ev) => ev.id === eventId);
+  const eventId = req.params.id;
+  const event = await DB.getEventById(user.email, eventId);
 
   if (!event) {
     res.status(404).send({ msg: 'Event not found' });

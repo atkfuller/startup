@@ -45,7 +45,9 @@ async function addEventbyUser(email, event){
 async function getEventsByUser(email){
     return eventsCollection.find({userEmail: email}).toArray();
 }
-
+async function getEventById(email, id) {
+  return eventsCollection.findOne({ userEmail: email, id: id });
+}
 
 module.exports = {
   getUser,
@@ -56,5 +58,6 @@ module.exports = {
   getHolidays,
   getEventsByUser,
   addEventbyUser,
+  getEventById,
 };
 
