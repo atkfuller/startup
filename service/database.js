@@ -32,3 +32,26 @@ async function addUser(user) {
 async function updateUser(user) {
   await userCollection.updateOne({ email: user.email }, { $set: user });
 }
+
+async function addHolidays(holidays){
+    await holidayCollection.insertMany(holidays);
+}
+async function getHolidays(){
+    return holidayCollection.find({}).toArray();
+}
+async function addEvent(event){
+    await eventsCollection.insertOne(event);
+}
+async function getEventsByUser(email){
+    return eventsCollection.find({userEmail: email}).toArray();
+}
+
+
+module.exports = {
+  getUser,
+  getUserByToken,
+  addUser,
+  updateUser,
+  
+};
+
