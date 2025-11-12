@@ -148,8 +148,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - there is database for both the users and the events so that the events can be found by user and id 
+- [x] **Stores credentials in MongoDB** - the credientials for users are stored in the database
 
 ## 🚀 WebSocket deliverable
 
