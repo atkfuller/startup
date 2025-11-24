@@ -9,12 +9,12 @@ export default function useEventWebSocket(){
                 token:localStorage.getItem("authToken")
             }));
         };
-        ws.onmessage=(message)=(msg)=>{
-            const data=JSON.parse(msg.data);
-            if(data.type==="EVENT_REMINDER"){
-                alert(`Reminder: You have an upcoming event - ${data.event.title} at ${data.event.time}`);
+        ws.onmessage = (msg) => {
+            const data = JSON.parse(msg.data);
+            if (data.type === "EVENT_REMINDER") {
+                alert(`Reminder: ${data.event.title} at ${data.event.time}`);
             }
-        };
+            };
         return()=>ws.close();
     },[]);
 }

@@ -1,39 +1,47 @@
-const userSockets = {};  
+const WebSocket = require('ws');
+const DB = require('./database');
+
+const userSockets = {};
 
 function setupWebsocket(httpServer) {
-    const wss = new WebSocketServer({ server });
+  const wss = new WebSocket.Server({ server: httpServer });
 
-    wss.on('connection', (socket) => {
-        console.log('WebSocket client connected');
+  wss.on('connection', (socket) => {
+    console.log('WebSocket connected');
 
-        socket.on('message', async (msg) => {
-        const data = JSON.parse(msg);
+    socket.on('message', async (msg) => {
+      const data = JSON.parse(msg);
 
-        if (data.type === "AUTH") {
-            const user = await DB.getUserByToken(data.token);
+      if (data.type === "AUTH") {
+        const user = await DB.getUserByToken(data.token);
 
-            if (user) {
-            socket.email = user.email;
-            userSockets[user.email] = socket;
-            console.log(`WebSocket authenticated: ${user.email}`);
-            } else {
-            console.log("Invalid WebSocket auth token");
-            }
+        if (user) {
+          socket.email = user.email;
+          userSockets[user.email] = socket;
+          console.log("WebSocket authenticated:", user.email);
         }
-        });
-
-        socket.on('close', () => {
-        if (socket.email) {
-            delete userSockets[socket.email];
-            console.log(`WebSocket disconnected: ${socket.email}`);
-        }
-        });
+      }
     });
-    }
-function sendReminder(email, event){
-    const socket=userSockets[email];
-    if(socket){
-        socket.send(JSON.stringify({type:"EVENT_REMINDER", event}));
-    }
+
+    socket.on('close', () => {
+      if (socket.email) {
+        delete userSockets[socket.email];
+      }
+    });
+  });
 }
-module.exports = {setupWebsocket, sendReminder};
+
+function sendReminder(email, event) {
+  const socket = userSockets[email];
+  if (socket) {
+    socket.send(JSON.stringify({
+      type: "EVENT_REMINDER",
+      event
+    }));
+  }
+}
+
+module.exports = {
+  setupWebsocket,
+  sendReminder
+};

@@ -5,6 +5,8 @@ const path = require("path");
 const DB = require('./database.js');
 const uuid = require('uuid');
 const app = express();
+const { setupWebsocket}= require('./websocket.js');
+const {startReminderService}= require('./reminderService.js');
 
 const authCookieName = 'token';
 const users = [];
@@ -179,4 +181,5 @@ const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 setupWebsocket(httpService);
+startReminderService();
 
