@@ -7,12 +7,14 @@ import AddEvent from './addEvent/eventform.jsx';
 import Calendar from './calendar/calendar.jsx';
 import  Event  from './event/event.jsx';
 import { AuthState } from './login/authState';
+import useEventWebSocket from "./useEventWebSocket.js";
 
 export default function App() {
   const [events, setEvents] = useState([]);
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
+  useEventWebSocket();
   function handleLogout() {
   localStorage.removeItem("currentUser");
   navigate("/login"); 
