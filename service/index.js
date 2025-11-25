@@ -176,19 +176,16 @@ function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     maxAge: 1000 * 60 * 60 * 24 * 365,
     secure: false,
-    httpOnly: true,
+    httpOnly: false,
     sameSite: 'lax',
   });
 }
 //Websocket setup
 
-wss.on('connection', (ws) => {
-  console.log("A WebSocket client connected.");
-});
-
 wss.on('connection', (ws, req)=>{
   console.log("WebSocket connection established");
   const token= req.url.replace('/?token=', '');
+  console.log("Token received from WS:", token);
   userSockets.set(token, ws);
   ws.on('close',()=>{
     userSockets.delete(token);
