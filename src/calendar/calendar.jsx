@@ -56,45 +56,35 @@ export default function Calendar(props) {
 
   fetchData();
 }, []);
-  // useEffect(() => { 
-  //   fetch('/api/events', {credentials: 'include'})
-  //     .then(async (response) =>{
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         console.log("Fetched events:", data); 
-  //         setEvents(data);
-  //       } else if (response.status === 401) {
-  //         props.onLogout(); // user not logged in
-  //       } else {
-  //         const body = await response.json();
-  //         setError(body?.msg || "Failed to load events");
-  //       }
-  //     }).catch((err) => console.error("Fetch error:", err));
-      
-  // }, []);
+ //websocket for reminders
+ useEffect(() => {
+  const token = document.cookie
+    .split("; ")
+    .find(row => row.startsWith("token="))
+    ?.split("=")[1];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const username = localStorage.getItem("currentUser");
-      if (!username) return;
+  if (!token) return;
 
-      const userEvents = JSON.parse(localStorage.getItem(username)) || [];
-      const now = new Date();
+  const ws = new WebSocket(`ws://localhost:4000/?token=${token}`);
 
-      const upcoming = userEvents.find(ev => {
-        const eventTime = new Date(ev.startTime);
-        const diffMinutes = (eventTime - now) / 60000;
-        return diffMinutes > 0 && diffMinutes <= 5;
-      });
+  ws.onmessage = (msg) => {
+    try {
+      const data = JSON.parse(msg.data);
 
-      if (upcoming) {
-        setReminder(`🔔 Reminder: "${upcoming.eventTitle}" starts soon!`);
-        setTimeout(() => setReminder(null), 10000);
+      if (data.type === "reminder") {
+        setReminder(`🔔 Reminder: "${data.eventTitle}" starts in the next 5 minutes!`);
+        setTimeout(() => setReminder(null), 12000);
       }
-    }, 60000); 
+    } catch (err) {
+      console.error("WS error:", err);
+    }
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  ws.onopen = () => console.log("WebSocket connected");
+  ws.onclose = () => console.log("WebSocket closed");
+
+  return () => ws.close();
+}, []);
 
   const today = new Date();
   const year = today.getFullYear();
