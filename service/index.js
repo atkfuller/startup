@@ -11,6 +11,7 @@ const authCookieName = 'token';
 const users = [];
 const eventsByUser = {};
 const API_KEY ="4IAp9ocJBJ8fTCqkheTGm8UnkwJAFox7";
+const userSockets= new Map();
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
@@ -174,7 +175,50 @@ function setAuthCookie(res, authToken) {
     sameSite: 'lax',
   });
 }
+//Websocket setup
+const http= require('http');
+const {WebSocketServer}=require('ws');
 
-app.listen(port, () => {
+const server= http.createServer(app);
+const wss= new WebSocketServer({server});
+
+wss.on('connection', (ws, req)=>{
+  console.log("WebSocket connection established");
+  const token= req.url.replace('/?token=', '');
+  userSockets.set(token, ws);
+  ws.on('close',()=>{
+    userSockets.delete(token);
+  });
+});
+
+setInterval(async () => {
+  const now = Date.now();
+
+  // Loop through all connected users
+  for (const [token, ws] of userSockets.entries()) {
+    if (ws.readyState !== ws.OPEN) continue;
+
+    const user = await DB.getUserByToken(token);
+    if (!user) continue;
+
+    const events = await DB.getEventsByUser(user.email);
+
+    for (const ev of events) {
+      if (!ev.startTime) continue;
+
+      const diffMinutes = (new Date(ev.startTime).getTime() - now) / 60000;
+
+      if (diffMinutes > 0 && diffMinutes <= 5) {
+        ws.send(JSON.stringify({
+          type: "reminder",
+          eventTitle: ev.eventTitle,
+          eventId: ev.id,
+        }));
+      }
+    }
+  }
+}, 60000); // check every minute
+
+server.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
