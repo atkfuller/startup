@@ -1,4 +1,4 @@
-import { userEffect} from 'react';
+import { useEffect} from 'react';
 
 export default function useEventWebSocket(){
     useEffect(()=>{

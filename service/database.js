@@ -48,14 +48,6 @@ async function getEventsByUser(email){
 async function getEventById(email, id) {
   return eventsCollection.findOne({ userEmail: email, id: id });
 }
-async function getAllUsers(){
-  return userCollection.find({}).toArray();
-}
-async function updateEventNotified(email, id){
-  await eventsCollection.updateOne(
-    {userEmail: email, id: id}, 
-    {$set: {notified: true}});
-}
 
 module.exports = {
   getUser,
@@ -67,7 +59,4 @@ module.exports = {
   getEventsByUser,
   addEventbyUser,
   getEventById,
-  getAllUsers,
-  updateEventNotified,
 };
-

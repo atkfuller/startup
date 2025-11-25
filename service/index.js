@@ -3,10 +3,9 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const path = require("path");
 const DB = require('./database.js');
+
 const uuid = require('uuid');
 const app = express();
-const { setupWebsocket}= require('./websocket.js');
-const {startReminderService}= require('./reminderService.js');
 
 const authCookieName = 'token';
 const users = [];
@@ -19,7 +18,6 @@ app.use(cookieParser());
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
-
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
@@ -177,9 +175,6 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-const httpService = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-setupWebsocket(httpService);
-startReminderService();
-

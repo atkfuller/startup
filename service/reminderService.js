@@ -1,5 +1,5 @@
-const DB = require('../database');
-const { sendReminder } = require('./websocketService');
+const DB = require('./database');
+const { sendReminder } = require('./websocket.js');
 
 function startReminderService() {
   setInterval(async () => {
