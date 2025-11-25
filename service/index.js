@@ -6,6 +6,11 @@ const DB = require('./database.js');
 
 const uuid = require('uuid');
 const app = express();
+const http= require('http');
+const {WebSocketServer}=require('ws');
+
+const server= http.createServer(app);
+const wss= new WebSocketServer({server});
 
 const authCookieName = 'token';
 const users = [];
@@ -176,11 +181,10 @@ function setAuthCookie(res, authToken) {
   });
 }
 //Websocket setup
-const http= require('http');
-const {WebSocketServer}=require('ws');
 
-const server= http.createServer(app);
-const wss= new WebSocketServer({server});
+wss.on('connection', (ws) => {
+  console.log("A WebSocket client connected.");
+});
 
 wss.on('connection', (ws, req)=>{
   console.log("WebSocket connection established");

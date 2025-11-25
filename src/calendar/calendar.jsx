@@ -57,6 +57,7 @@ export default function Calendar(props) {
   fetchData();
 }, []);
  //websocket for reminders
+ 
  useEffect(() => {
   const token = document.cookie
     .split("; ")
@@ -117,6 +118,11 @@ export default function Calendar(props) {
   return (
     <div className="calendar-page">
       <h2>Welcome, {props.userName}</h2>
+      {reminder && (
+        <div className="reminder-popup">
+          {reminder}
+        </div>
+      )}
       <div style={{ textAlign: "center", margin: "20px" }}>
         <button onClick={() => navigate("/addEvent")}>+</button>
       </div>
@@ -189,11 +195,7 @@ export default function Calendar(props) {
         Logout
       </Button>
       </div>
-      {reminder && (
-        <div className="reminder-popup">
-          {reminder}
-        </div>
-      )}
+      
     </div>
   );
 }
