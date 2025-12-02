@@ -66,7 +66,9 @@ export default function Calendar(props) {
 
   if (!token) return;
 
-  const ws = new WebSocket(`ws://ultimatecalendar.click:4000/?token=${token}`);
+  const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+  const ws = new WebSocket(`${wsProtocol}://${window.location.host}/?token=${token}`);
+
 
   ws.onmessage = (msg) => {
     try {
