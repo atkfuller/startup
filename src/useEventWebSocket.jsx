@@ -2,7 +2,7 @@ import { useEffect} from 'react';
 
 export default function useEventWebSocket(){
     useEffect(()=>{
-        const ws= new WebSocket("ws://localhost:4000");
+        const ws= new WebSocket("ws://ultimatecalendar.click:4000");
         ws.onopen=()=>{
             ws.send(JSON.stringify({
                 type:"AUTH", 
