@@ -203,11 +203,16 @@ setInterval(async () => {
     if (!user) continue;
 
     const events = await DB.getEventsByUser(user.email);
+    console.log("🔍 Reminder loop running... connected users:", userSockets.size);
+
 
     for (const ev of events) {
       if (!ev.startTime) continue;
 
       const diffMinutes = (new Date(ev.startTime).getTime() - now) / 60000;
+      console.log("Checking event:", ev.eventTitle, "start:", ev.startTime);
+      console.log("diffMinutes =", diffMinutes);
+
 
       if (diffMinutes > 0 && diffMinutes <= 5) {
         ws.send(JSON.stringify({

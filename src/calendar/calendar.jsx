@@ -66,8 +66,18 @@ export default function Calendar(props) {
 
   if (!token) return;
 
+  const isLocal = window.location.hostname === "localhost";
+
   const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
-  const ws = new WebSocket(`${wsProtocol}://${window.location.host}/?token=${token}`);
+
+  // If local dev: connect to backend port 4000
+  // If deployed: connect to same origin as website
+  const wsHost = isLocal 
+    ? "localhost:4000" 
+    : window.location.host;
+
+  const ws = new WebSocket(`${wsProtocol}://${wsHost}/?token=${token}`);
+
 
 
   ws.onmessage = (msg) => {
