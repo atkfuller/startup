@@ -33,7 +33,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     const user = await createUser(req.body.email, req.body.password);
 
     setAuthCookie(res, user.token);
-    res.send({ email: user.email });
+    res.send({ email: user.email, token: user.token });
   }
 });
 
@@ -45,7 +45,7 @@ apiRouter.post('/auth/login', async (req, res) => {
       user.token = uuid.v4();
       await DB.updateUser(user);
       setAuthCookie(res, user.token);
-      res.send({ email: user.email });
+      res.send({ email: user.email, token: user.token});
       return;
     }
   }
@@ -187,6 +187,7 @@ wss.on('connection', (ws, req)=>{
   const token= req.url.replace('/?token=', '');
   console.log("Token received from WS:", token);
   userSockets.set(token, ws);
+  console.log("All stored tokens:", userSockets.keys());
   ws.on('close',()=>{
     userSockets.delete(token);
   });
@@ -194,12 +195,16 @@ wss.on('connection', (ws, req)=>{
 
 setInterval(async () => {
   const now = Date.now();
+  console.log("Reached the loop");
 
   // Loop through all connected users
   for (const [token, ws] of userSockets.entries()) {
+    console.log("Token from WS:", token);
+
     if (ws.readyState !== ws.OPEN) continue;
 
     const user = await DB.getUserByToken(token);
+    console.log("User found:", user ? user.email : "NO USER FOUND");
     if (!user) continue;
 
     const events = await DB.getEventsByUser(user.email);
