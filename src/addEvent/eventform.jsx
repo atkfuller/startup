@@ -19,12 +19,14 @@ export default function AddEvent() {
       navigate("/");
       return;
     }
+    const utcStart = new Date(startTime).toISOString();
+    const utcEnd = new Date(endTime).toISOString();
 
     const newEvent = {
       id: Date.now(),
       eventTitle,
-      startTime,
-      endTime,
+      startTime: utcStart,
+      endTime: utcEnd,
       description,
     };
     const res = await fetch("/api/events", {
