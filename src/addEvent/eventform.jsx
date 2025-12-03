@@ -13,35 +13,35 @@ export default function AddEvent() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    
     const currentUser = localStorage.getItem("currentUser");
     if (!currentUser) {
       alert("No user logged in! Please log in first.");
       navigate("/");
       return;
     }
+
+    // Convert to UTC
     const utcStart = new Date(startTime).toISOString();
     const utcEnd = new Date(endTime).toISOString();
 
     const newEvent = {
-      id: Date.now(),
       eventTitle,
       startTime: utcStart,
       endTime: utcEnd,
       description,
     };
-    const res = await fetch("/api/events", {
+
+    await fetch("/api/events", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ eventTitle, startTime, endTime, description}),
+      body: JSON.stringify(newEvent),
     });
-    const existingEvents = JSON.parse(localStorage.getItem(currentUser)) || [];
-    const updatedEvents = [...existingEvents, newEvent];
-
-    localStorage.setItem(currentUser, JSON.stringify(updatedEvents));
 
     navigate("/calendar");
-  };
+}
+
 
   return (
     <div className="eventform-page">
