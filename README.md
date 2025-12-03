@@ -155,8 +155,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - there is in index.js that listens when webscoket connects
+- [x] **Frontend makes WebSocket connection** - when in the calendar page, the websocket is connected
+- [x] **Data sent over WebSocket connection** - it sends events that are happening in the next 5 minutes
+- [x] **WebSocket data displayed** - reminder shows up on the calendar page when an event is happening
+- [x] **Application is fully functional** - the application allows for login and add events and displays them in the calendar along with holidays. It also has a remidner syatem that reminds the user that there is an event coming up.
