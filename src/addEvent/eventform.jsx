@@ -14,9 +14,9 @@ export default function AddEvent() {
     e.preventDefault();
 
     
-    const currentUser = localStorage.getItem("currentUser");
-    if (!currentUser) {
-      alert("No user logged in! Please log in first.");
+    const res = await fetch("/api/events", { credentials: "include" });
+    if (res.status === 401) {
+      alert("Session expired — please log in again.");
       navigate("/");
       return;
     }

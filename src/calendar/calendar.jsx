@@ -23,7 +23,6 @@ export default function Calendar(props) {
         // Logout failed. Assuming offline
       })
       .finally(() => {
-        localStorage.removeItem("currentUser");
         navigate("/");
       });
   }

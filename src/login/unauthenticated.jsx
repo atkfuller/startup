@@ -29,7 +29,7 @@ export function Unauthenticated({userName, onLogin}) {
       },
     });
     if(response?.status===200){
-      localStorage.setItem("currentUser", email);
+      
       onLogin(email);
     }else{
       console.log("Login failed", response);
